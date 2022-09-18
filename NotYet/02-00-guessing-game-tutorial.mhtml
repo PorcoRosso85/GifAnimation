@@ -1,0 +1,598 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: data:text/html, <html contenteditable>
+Subject: 
+Date: Fri, 5 Aug 2022 06:42:44 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--otAdifwXviZ36fGPXPzuRhYonnUzCo17iCKHUlHKX2----"
+
+
+------MultipartBoundary--otAdifwXviZ36fGPXPzuRhYonnUzCo17iCKHUlHKX2----
+Content-Type: text/html
+Content-ID: <frame-2968ED010AE397747D4C3DB352D22496@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: data:text/html, <html contenteditable>
+
+<html contenteditable=3D""><head><meta http-equiv=3D"Content-Type" content=
+=3D"text/html; charset=3Dwindows-1252"></head><body><div>https://doc.rust-l=
+ang.org/book/ch02-00-guessing-game-tutorial.html</div><br><table style=3D"b=
+order: 1px solid rgb(204, 204, 204); border-collapse: collapse; margin: 0px=
+; padding: 0px; width: 1904px; color: rgb(0, 0, 0); font-family: &quot;Open=
+ Sans&quot;, sans-serif;"><tbody><tr style=3D"background-color: rgb(255, 25=
+5, 255); border: 1px solid rgb(221, 221, 221); padding: 0.35em; vertical-al=
+ign: top;"><td style=3D"padding: 0.625em;"><pre style=3D"font-size: 16px; p=
+osition: relative;"><code class=3D"language-rust ignore hljs" style=3D"font=
+-size: 0.875em; display: block; overflow-x: auto; background: rgb(246, 247,=
+ 246); padding: 0.5em; font-family: &quot;Source Code Pro&quot;, Consolas, =
+&quot;Ubuntu Mono&quot;, Menlo, &quot;DejaVu Sans Mono&quot;, monospace, mo=
+nospace !important;"><span class=3D"hljs-keyword" style=3D"color: rgb(157, =
+0, 236);">use</span> std::io;
+
+<span class=3D"hljs-function"><span class=3D"hljs-keyword" style=3D"color: =
+rgb(157, 0, 236);">fn</span> <span class=3D"hljs-title" style=3D"color: rgb=
+(0, 48, 242);">main</span></span>() {
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Gues=
+s the number!"</span>);
+
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Plea=
+se input your guess."</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</sp=
+an> <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut</sp=
+an> guess =3D <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0)=
+;">String</span>::new();
+
+    io::stdin()
+        .read_line(&amp;<span class=3D"hljs-keyword" style=3D"color: rgb(15=
+7, 0, 236);">mut</span> guess)
+        .expect(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);=
+">"Failed to read line"</span>);
+
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"You =
+guessed: {guess}"</span>);
+}
+</code><div><br></div></pre></td><td style=3D"padding: 0.625em;"><pre style=
+=3D"position: relative; font-size: 16px;"><code class=3D"language-rust igno=
+re hljs" style=3D"font-size: 0.875em; display: block; overflow-x: auto; bac=
+kground: rgb(246, 247, 246); padding: 0.5em; font-family: &quot;Source Code=
+ Pro&quot;, Consolas, &quot;Ubuntu Mono&quot;, Menlo, &quot;DejaVu Sans Mon=
+o&quot;, monospace, monospace !important;"><span class=3D"hljs-keyword" sty=
+le=3D"color: rgb(157, 0, 236);">use</span> std::io;
+<span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">use</span> =
+rand::Rng;
+
+<span class=3D"hljs-function"><span class=3D"hljs-keyword" style=3D"color: =
+rgb(157, 0, 236);">fn</span> <span class=3D"hljs-title" style=3D"color: rgb=
+(0, 48, 242);">main</span></span>() {
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Gues=
+s the number!"</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</sp=
+an> secret_number =3D rand::thread_rng().gen_range(<span class=3D"hljs-numb=
+er" style=3D"color: rgb(178, 30, 0);">1</span>..=3D<span class=3D"hljs-numb=
+er" style=3D"color: rgb(178, 30, 0);">100</span>);
+
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"The =
+secret number is: {secret_number}"</span>);
+
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Plea=
+se input your guess."</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</sp=
+an> <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut</sp=
+an> guess =3D <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0)=
+;">String</span>::new();
+
+    io::stdin()
+        .read_line(&amp;<span class=3D"hljs-keyword" style=3D"color: rgb(15=
+7, 0, 236);">mut</span> guess)
+        .expect(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);=
+">"Failed to read line"</span>);
+
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"You =
+guessed: {guess}"</span>);
+}
+</code></pre><p style=3D"line-height: 1.45em; font-size: 16px;"><br></p></t=
+d><td style=3D"padding: 0.625em;"><pre style=3D"position: relative; font-si=
+ze: 16px;"><code class=3D"language-rust ignore does_not_compile hljs" style=
+=3D"font-size: 0.875em; display: block; overflow-x: auto; background: rgb(2=
+46, 247, 246); padding: 0.5em; font-family: &quot;Source Code Pro&quot;, Co=
+nsolas, &quot;Ubuntu Mono&quot;, Menlo, &quot;DejaVu Sans Mono&quot;, monos=
+pace, monospace !important;"><span class=3D"hljs-keyword" style=3D"color: r=
+gb(157, 0, 236);">use</span> rand::Rng;
+<span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">use</span> =
+std::cmp::Ordering;
+<span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">use</span> =
+std::io;
+
+<span class=3D"hljs-function"><span class=3D"hljs-keyword" style=3D"color: =
+rgb(157, 0, 236);">fn</span> <span class=3D"hljs-title" style=3D"color: rgb=
+(0, 48, 242);">main</span></span>() {
+    <span class=3D"hljs-comment" style=3D"color: rgb(87, 87, 87);">// --sni=
+p--</span>
+<span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hljs-buil=
+t_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs=
+-string" style=3D"color: rgb(0, 130, 0);">"Guess the number!"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">let</span> secret_number =3D=
+ rand::thread_rng().gen_range(<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">1</span>..=3D<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">100</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"The secret number is: {s=
+ecret_number}"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Please input your guess.=
+"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">let</span> <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">mut</span> guess =3D <span c=
+lass=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">String</span>::new=
+();
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    io::stdin()
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        .read_line(&a=
+mp;<span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut</spa=
+n> guess)
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        .expect(<span=
+ class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Failed to read lin=
+e"</span>);
+</span>
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"You =
+guessed: {guess}"</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">match</=
+span> guess.cmp(&amp;secret_number) {
+        Ordering::Less =3D&gt; <span class=3D"hljs-built_in" style=3D"color=
+: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=3D"co=
+lor: rgb(0, 130, 0);">"Too small!"</span>),
+        Ordering::Greater =3D&gt; <span class=3D"hljs-built_in" style=3D"co=
+lor: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=3D=
+"color: rgb(0, 130, 0);">"Too big!"</span>),
+        Ordering::Equal =3D&gt; <span class=3D"hljs-built_in" style=3D"colo=
+r: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=3D"c=
+olor: rgb(0, 130, 0);">"You win!"</span>),
+    }
+}
+</code><div><br></div></pre></td><td style=3D"padding: 0.625em;"><pre style=
+=3D"position: relative; font-size: 16px;"><code class=3D"language-rust igno=
+re hljs" style=3D"font-size: 0.875em; display: block; overflow-x: auto; bac=
+kground: rgb(246, 247, 246); padding: 0.5em; font-family: &quot;Source Code=
+ Pro&quot;, Consolas, &quot;Ubuntu Mono&quot;, Menlo, &quot;DejaVu Sans Mon=
+o&quot;, monospace, monospace !important;"><span class=3D"boring" style=3D"=
+opacity: 0.6;"><span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236=
+);">use</span> rand::Rng;
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-k=
+eyword" style=3D"color: rgb(157, 0, 236);">use</span> std::cmp::Ordering;
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-k=
+eyword" style=3D"color: rgb(157, 0, 236);">use</span> std::io;
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-f=
+unction"><span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">fn=
+</span> <span class=3D"hljs-title" style=3D"color: rgb(0, 48, 242);">main</=
+span></span>() {
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Guess the number!"</span=
+>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">let</span> secret_number =3D=
+ rand::thread_rng().gen_range(<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">1</span>..=3D<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">100</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"The secret number is: {s=
+ecret_number}"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Please input your guess.=
+"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span>    <span class=3D"hljs-comment" style=3D"color: rgb(87, 87, 87);">/=
+/ --snip--</span>
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</sp=
+an> <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut</sp=
+an> guess =3D <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0)=
+;">String</span>::new();
+
+    io::stdin()
+        .read_line(&amp;<span class=3D"hljs-keyword" style=3D"color: rgb(15=
+7, 0, 236);">mut</span> guess)
+        .expect(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);=
+">"Failed to read line"</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</sp=
+an> guess: <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">=
+u32</span> =3D guess.trim().parse().expect(<span class=3D"hljs-string" styl=
+e=3D"color: rgb(0, 130, 0);">"Please type a number!"</span>);
+
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"You =
+guessed: {guess}"</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">match</=
+span> guess.cmp(&amp;secret_number) {
+        Ordering::Less =3D&gt; <span class=3D"hljs-built_in" style=3D"color=
+: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=3D"co=
+lor: rgb(0, 130, 0);">"Too small!"</span>),
+        Ordering::Greater =3D&gt; <span class=3D"hljs-built_in" style=3D"co=
+lor: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=3D=
+"color: rgb(0, 130, 0);">"Too big!"</span>),
+        Ordering::Equal =3D&gt; <span class=3D"hljs-built_in" style=3D"colo=
+r: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=3D"c=
+olor: rgb(0, 130, 0);">"You win!"</span>),
+    }
+<span class=3D"boring" style=3D"opacity: 0.6;">}
+</span></code><div><span class=3D"boring" style=3D"opacity: 0.6;"><br></spa=
+n></div></pre></td><td style=3D"padding: 0.625em;"><pre style=3D"position: =
+relative; font-size: 16px;"><code class=3D"language-rust ignore hljs" style=
+=3D"font-size: 0.875em; display: block; overflow-x: auto; background: rgb(2=
+46, 247, 246); padding: 0.5em; font-family: &quot;Source Code Pro&quot;, Co=
+nsolas, &quot;Ubuntu Mono&quot;, Menlo, &quot;DejaVu Sans Mono&quot;, monos=
+pace, monospace !important;"><span class=3D"boring" style=3D"opacity: 0.6;"=
+><span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">use</span>=
+ rand::Rng;
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-k=
+eyword" style=3D"color: rgb(157, 0, 236);">use</span> std::cmp::Ordering;
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-k=
+eyword" style=3D"color: rgb(157, 0, 236);">use</span> std::io;
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-f=
+unction"><span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">fn=
+</span> <span class=3D"hljs-title" style=3D"color: rgb(0, 48, 242);">main</=
+span></span>() {
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Guess the number!"</span=
+>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">let</span> secret_number =3D=
+ rand::thread_rng().gen_range(<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">1</span>..=3D<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">100</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span>    <span class=3D"hljs-comment" style=3D"color: rgb(87, 87, 87);">/=
+/ --snip--</span>
+
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"The =
+secret number is: {secret_number}"</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">loop</s=
+pan> {
+        <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">pri=
+ntln!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"=
+Please input your guess."</span>);
+
+        <span class=3D"hljs-comment" style=3D"color: rgb(87, 87, 87);">// -=
+-snip--</span>
+
+<span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</span> <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut</span> guess =3D <=
+span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">String</span=
+>::new();
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        io::stdin()
+</span><span class=3D"boring" style=3D"opacity: 0.6;">            .read_lin=
+e(&amp;<span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut<=
+/span> guess)
+</span><span class=3D"boring" style=3D"opacity: 0.6;">            .expect(<=
+span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Failed to read=
+ line"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</span> guess: <spa=
+n class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">u32</span> =3D =
+guess.trim().parse().expect(<span class=3D"hljs-string" style=3D"color: rgb=
+(0, 130, 0);">"Please type a number!"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span =
+class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"You guessed: {guess=
+}"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span>        <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236=
+);">match</span> guess.cmp(&amp;secret_number) {
+            Ordering::Less =3D&gt; <span class=3D"hljs-built_in" style=3D"c=
+olor: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=
+=3D"color: rgb(0, 130, 0);">"Too small!"</span>),
+            Ordering::Greater =3D&gt; <span class=3D"hljs-built_in" style=
+=3D"color: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" st=
+yle=3D"color: rgb(0, 130, 0);">"Too big!"</span>),
+            Ordering::Equal =3D&gt; <span class=3D"hljs-built_in" style=3D"=
+color: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=
+=3D"color: rgb(0, 130, 0);">"You win!"</span>),
+        }
+    }
+}
+</code><div><br></div></pre></td><td style=3D"padding: 0.625em;"><pre style=
+=3D"position: relative; font-size: 16px;"><code class=3D"language-rust igno=
+re hljs" style=3D"font-size: 0.875em; display: block; overflow-x: auto; bac=
+kground: rgb(246, 247, 246); padding: 0.5em; font-family: &quot;Source Code=
+ Pro&quot;, Consolas, &quot;Ubuntu Mono&quot;, Menlo, &quot;DejaVu Sans Mon=
+o&quot;, monospace, monospace !important;"><span class=3D"boring" style=3D"=
+opacity: 0.6;"><span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236=
+);">use</span> rand::Rng;
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-k=
+eyword" style=3D"color: rgb(157, 0, 236);">use</span> std::cmp::Ordering;
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-k=
+eyword" style=3D"color: rgb(157, 0, 236);">use</span> std::io;
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-f=
+unction"><span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">fn=
+</span> <span class=3D"hljs-title" style=3D"color: rgb(0, 48, 242);">main</=
+span></span>() {
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Guess the number!"</span=
+>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">let</span> secret_number =3D=
+ rand::thread_rng().gen_range(<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">1</span>..=3D<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">100</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"The secret number is: {s=
+ecret_number}"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">loop</span> {
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span =
+class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Please input your g=
+uess."</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</span> <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut</span> guess =3D <=
+span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">String</span=
+>::new();
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        io::stdin()
+</span><span class=3D"boring" style=3D"opacity: 0.6;">            .read_lin=
+e(&amp;<span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut<=
+/span> guess)
+</span><span class=3D"boring" style=3D"opacity: 0.6;">            .expect(<=
+span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Failed to read=
+ line"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</span> guess: <spa=
+n class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">u32</span> =3D =
+guess.trim().parse().expect(<span class=3D"hljs-string" style=3D"color: rgb=
+(0, 130, 0);">"Please type a number!"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span =
+class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"You guessed: {guess=
+}"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span>        <span class=3D"hljs-comment" style=3D"color: rgb(87, 87, 87)=
+;">// --snip--</span>
+
+        <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mat=
+ch</span> guess.cmp(&amp;secret_number) {
+            Ordering::Less =3D&gt; <span class=3D"hljs-built_in" style=3D"c=
+olor: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=
+=3D"color: rgb(0, 130, 0);">"Too small!"</span>),
+            Ordering::Greater =3D&gt; <span class=3D"hljs-built_in" style=
+=3D"color: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" st=
+yle=3D"color: rgb(0, 130, 0);">"Too big!"</span>),
+            Ordering::Equal =3D&gt; {
+                <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, =
+0);">println!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130=
+, 0);">"You win!"</span>);
+                <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 23=
+6);">break</span>;
+            }
+        }
+    }
+}
+</code><div><br></div></pre></td><td style=3D"padding: 0.625em;"><pre style=
+=3D"position: relative; font-size: 16px;"><code class=3D"language-rust igno=
+re hljs" style=3D"font-size: 0.875em; display: block; overflow-x: auto; bac=
+kground: rgb(246, 247, 246); padding: 0.5em; font-family: &quot;Source Code=
+ Pro&quot;, Consolas, &quot;Ubuntu Mono&quot;, Menlo, &quot;DejaVu Sans Mon=
+o&quot;, monospace, monospace !important;"><span class=3D"boring" style=3D"=
+opacity: 0.6;"><span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236=
+);">use</span> rand::Rng;
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-k=
+eyword" style=3D"color: rgb(157, 0, 236);">use</span> std::cmp::Ordering;
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-k=
+eyword" style=3D"color: rgb(157, 0, 236);">use</span> std::io;
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;"><span class=3D"hljs-f=
+unction"><span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">fn=
+</span> <span class=3D"hljs-title" style=3D"color: rgb(0, 48, 242);">main</=
+span></span>() {
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Guess the number!"</span=
+>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">let</span> secret_number =3D=
+ rand::thread_rng().gen_range(<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">1</span>..=3D<span class=3D"hljs-number" style=3D"color: r=
+gb(178, 30, 0);">100</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span class=
+=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"The secret number is: {s=
+ecret_number}"</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    <span class=3D"hl=
+js-keyword" style=3D"color: rgb(157, 0, 236);">loop</span> {
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(<span =
+class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Please input your g=
+uess."</span>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</span> <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut</span> guess =3D <=
+span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">String</span=
+>::new();
+</span><span class=3D"boring" style=3D"opacity: 0.6;">
+</span>        <span class=3D"hljs-comment" style=3D"color: rgb(87, 87, 87)=
+;">// --snip--</span>
+
+        io::stdin()
+            .read_line(&amp;<span class=3D"hljs-keyword" style=3D"color: rg=
+b(157, 0, 236);">mut</span> guess)
+            .expect(<span class=3D"hljs-string" style=3D"color: rgb(0, 130,=
+ 0);">"Failed to read line"</span>);
+
+        <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let=
+</span> guess: <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0=
+);">u32</span> =3D <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0,=
+ 236);">match</span> guess.trim().parse() {
+            <span class=3D"hljs-literal" style=3D"color: rgb(178, 30, 0);">=
+Ok</span>(num) =3D&gt; num,
+            <span class=3D"hljs-literal" style=3D"color: rgb(178, 30, 0);">=
+Err</span>(_) =3D&gt; <span class=3D"hljs-keyword" style=3D"color: rgb(157,=
+ 0, 236);">continue</span>,
+        };
+
+        <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">pri=
+ntln!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"=
+You guessed: {guess}"</span>);
+
+        <span class=3D"hljs-comment" style=3D"color: rgb(87, 87, 87);">// -=
+-snip--</span>
+<span class=3D"boring" style=3D"opacity: 0.6;">
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        <span class=
+=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">match</span> guess.cmp=
+(&amp;secret_number) {
+</span><span class=3D"boring" style=3D"opacity: 0.6;">            Ordering:=
+:Less =3D&gt; <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0)=
+;">println!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, =
+0);">"Too small!"</span>),
+</span><span class=3D"boring" style=3D"opacity: 0.6;">            Ordering:=
+:Greater =3D&gt; <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30,=
+ 0);">println!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 13=
+0, 0);">"Too big!"</span>),
+</span><span class=3D"boring" style=3D"opacity: 0.6;">            Ordering:=
+:Equal =3D&gt; {
+</span><span class=3D"boring" style=3D"opacity: 0.6;">                <span=
+ class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println!</span>(=
+<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"You win!"</sp=
+an>);
+</span><span class=3D"boring" style=3D"opacity: 0.6;">                <span=
+ class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">break</span>;
+</span><span class=3D"boring" style=3D"opacity: 0.6;">            }
+</span><span class=3D"boring" style=3D"opacity: 0.6;">        }
+</span><span class=3D"boring" style=3D"opacity: 0.6;">    }
+</span><span class=3D"boring" style=3D"opacity: 0.6;">}
+</span></code><div><span class=3D"boring" style=3D"opacity: 0.6;"><br></spa=
+n></div></pre></td><td style=3D"padding: 0.625em;"><pre style=3D"position: =
+relative; font-size: 16px;"><code class=3D"language-rust ignore hljs" style=
+=3D"font-size: 0.875em; display: block; overflow-x: auto; background: rgb(2=
+46, 247, 246); padding: 0.5em; font-family: &quot;Source Code Pro&quot;, Co=
+nsolas, &quot;Ubuntu Mono&quot;, Menlo, &quot;DejaVu Sans Mono&quot;, monos=
+pace, monospace !important;"><span class=3D"hljs-keyword" style=3D"color: r=
+gb(157, 0, 236);">use</span> rand::Rng;
+<span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">use</span> =
+std::cmp::Ordering;
+<span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">use</span> =
+std::io;
+
+<span class=3D"hljs-function"><span class=3D"hljs-keyword" style=3D"color: =
+rgb(157, 0, 236);">fn</span> <span class=3D"hljs-title" style=3D"color: rgb=
+(0, 48, 242);">main</span></span>() {
+    <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">println=
+!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"Gues=
+s the number!"</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let</sp=
+an> secret_number =3D rand::thread_rng().gen_range(<span class=3D"hljs-numb=
+er" style=3D"color: rgb(178, 30, 0);">1</span>..=3D<span class=3D"hljs-numb=
+er" style=3D"color: rgb(178, 30, 0);">100</span>);
+
+    <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">loop</s=
+pan> {
+        <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">pri=
+ntln!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"=
+Please input your guess."</span>);
+
+        <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let=
+</span> <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mut=
+</span> guess =3D <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30=
+, 0);">String</span>::new();
+
+        io::stdin()
+            .read_line(&amp;<span class=3D"hljs-keyword" style=3D"color: rg=
+b(157, 0, 236);">mut</span> guess)
+            .expect(<span class=3D"hljs-string" style=3D"color: rgb(0, 130,=
+ 0);">"Failed to read line"</span>);
+
+        <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">let=
+</span> guess: <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0=
+);">u32</span> =3D <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0,=
+ 236);">match</span> guess.trim().parse() {
+            <span class=3D"hljs-literal" style=3D"color: rgb(178, 30, 0);">=
+Ok</span>(num) =3D&gt; num,
+            <span class=3D"hljs-literal" style=3D"color: rgb(178, 30, 0);">=
+Err</span>(_) =3D&gt; <span class=3D"hljs-keyword" style=3D"color: rgb(157,=
+ 0, 236);">continue</span>,
+        };
+
+        <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, 0);">pri=
+ntln!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130, 0);">"=
+You guessed: {guess}"</span>);
+
+        <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 236);">mat=
+ch</span> guess.cmp(&amp;secret_number) {
+            Ordering::Less =3D&gt; <span class=3D"hljs-built_in" style=3D"c=
+olor: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" style=
+=3D"color: rgb(0, 130, 0);">"Too small!"</span>),
+            Ordering::Greater =3D&gt; <span class=3D"hljs-built_in" style=
+=3D"color: rgb(178, 30, 0);">println!</span>(<span class=3D"hljs-string" st=
+yle=3D"color: rgb(0, 130, 0);">"Too big!"</span>),
+            Ordering::Equal =3D&gt; {
+                <span class=3D"hljs-built_in" style=3D"color: rgb(178, 30, =
+0);">println!</span>(<span class=3D"hljs-string" style=3D"color: rgb(0, 130=
+, 0);">"You win!"</span>);
+                <span class=3D"hljs-keyword" style=3D"color: rgb(157, 0, 23=
+6);">break</span>;
+            }
+        }
+    }
+}
+</code><div><br></div></pre></td><td style=3D"padding: 0.625em;"></td><td s=
+tyle=3D"padding: 0.625em;"></td><td style=3D"padding: 0.625em;"></td><td st=
+yle=3D"padding: 0.625em;"></td><td style=3D"padding: 0.625em;"></td><td sty=
+le=3D"padding: 0.625em;"></td><td style=3D"padding: 0.625em;"></td><td styl=
+e=3D"padding: 0.625em;"></td><td style=3D"padding: 0.625em;"></td><td style=
+=3D"padding: 0.625em;"></td><td style=3D"padding: 0.625em;"></td><td style=
+=3D"padding: 0.625em;"></td></tr><tr style=3D"background-color: rgb(255, 25=
+5, 255); border: 1px solid rgb(221, 221, 221); padding: 0.35em; vertical-al=
+ign: top;"><td style=3D"padding: 0.625em;"><br></td></tr></tbody></table></=
+body></html>
+------MultipartBoundary--otAdifwXviZ36fGPXPzuRhYonnUzCo17iCKHUlHKX2------
