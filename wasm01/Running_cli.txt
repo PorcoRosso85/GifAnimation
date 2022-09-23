@@ -1,0 +1,29 @@
+rustup target add wasm32-wasi
+cargo build --target wasm32-wasi --release
+
+//run hello.js
+wasmedge --dir .:. ../target/wasm32-wasi/release/wasmedge_quickjs.wasm hello.js WasmEdge Runtime
+
+//run demo.js
+wasmedge --dif .:. ../../target/wasm32-wasi/release/wasmedge_quickjs.wasm demo.js
+
+//run http_demo.js
+wasmedge --dir .:. ../target/wasm32-wasi/release/wasmedge_quickjs.wasm http_demo.js
+
+//run http_server_demo.js
+nohup wasmedge --dir .:. ../target/wasm32-wasi/release/wasmdge_quickjs.wasm http_server_demo.js
+curl -d "WasmEdge" -X POST http://localhost:8000
+
+//run main.js
+cargo build --target wasm32-wasi --release --features=tensorflow... ...
+wasmedge-tensorflow-lite --dir .:. ../../target/wasm32-wasi/release/wasmedge_quickjs.wasm main.js
+
+//run main.js, make it faster
+wasmedgec-tensorflow ../../target/wasm32-wasi/release/wasmedge_quickjs.wasm wasmedge_quickjs.so
+wasmedge-tensorflow-lite --dir .:. wasmedge_quickjs.so main.js
+
+
+
+
+// run hello.js
+wasmedge --dir .:. ../target/wasm32-wasi/release/wasmedge_quickjs.wasm hello.js WasmEdge Runtime

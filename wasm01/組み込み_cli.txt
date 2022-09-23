@@ -1,0 +1,3 @@
+// embed_js.wasm
+cargo build --target wasm32-wasi --release
+wasmedge --dir .:. target/wasm32-wasi/release/embed_js.wasm

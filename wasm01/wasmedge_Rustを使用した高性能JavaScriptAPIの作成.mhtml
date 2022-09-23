@@ -1,0 +1,2276 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://www.secondstate.io/articles/embed-rust-in-javascript/
+Subject: =?utf-8?Q?Rust=E3=82=92=E4=BD=BF=E7=94=A8=E3=81=97=E3=81=9F=E9=AB=98=E6?=
+ =?utf-8?Q?=80=A7=E8=83=BDJavaScriptAPI=E3=81=AE=E4=BD=9C=E6=88=90?=
+Date: Sat, 28 May 2022 07:15:48 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--apksyWDv2N0hhMDiqjVJ6YDvKq3Ezcu9ZrCBuPwS0a----"
+
+
+------MultipartBoundary--apksyWDv2N0hhMDiqjVJ6YDvKq3Ezcu9ZrCBuPwS0a----
+Content-Type: text/html
+Content-ID: <frame-F39E01CA9D1B5BF99B5344B53B80E50D@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.secondstate.io/articles/embed-rust-in-javascript/
+
+<!DOCTYPE html><html lang=3D"ja" class=3D"translated-ltr"><head><meta http-=
+equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"><meta name=3D=
+"generator" content=3D"Hugo 0.62.2"><meta name=3D"viewport" content=3D"widt=
+h=3Ddevice-width,initial-scale=3D1,viewport-fit=3Dcover">
+<meta name=3D"color-scheme" content=3D"light dark">
+<meta name=3D"supported-color-schemes" content=3D"light dark"><title>Rust=
+=E3=82=92=E4=BD=BF=E7=94=A8=E3=81=97=E3=81=9F=E9=AB=98=E6=80=A7=E8=83=BDJav=
+aScriptAPI=E3=81=AE=E4=BD=9C=E6=88=90</title><link rel=3D"stylesheet" href=
+=3D"https://www.secondstate.io/css/core.min.d80a993d510c975292aaf125143453c=
+aea1ce9183e67780892f9688fb918e7767bfa3d923abc58737a333f5d82dd794e.css"><met=
+a name=3D"twitter:card" content=3D"summary">
+<meta name=3D"twitter:title" content=3D"Creating high-performance JavaScrip=
+t APIs using Rust"><link type=3D"text/css" rel=3D"stylesheet" charset=3D"UT=
+F-8" href=3D"https://translate.googleapis.com/translate_static/css/translat=
+eelement.css"></head><body><section id=3D"header">
+    <div class=3D"header wrap"><span class=3D"header left-side"><a class=3D=
+"site home" href=3D"https://www.secondstate.io/"><img class=3D"site logo" s=
+rc=3D"https://www.secondstate.io/assets/img/logo.png" alt=3D""><span class=
+=3D"site name"></span></a></span>
+        <span class=3D"header right-side"><div class=3D"nav wrap"><nav clas=
+s=3D"nav"><a class=3D"nav item" href=3D"https://github.com/WasmEdge/WasmEdg=
+e" target=3D"_blank"><font style=3D"vertical-align: inherit;"><font style=
+=3D"vertical-align: inherit;">GitHub</font></font></a><a class=3D"nav item"=
+ href=3D"https://www.secondstate.io/articles/wasmedge-and-golang"><font sty=
+le=3D"vertical-align: inherit;"><font style=3D"vertical-align: inherit;">=
+=E8=A1=8C=E3=81=91</font></font></a><a class=3D"nav item" href=3D"https://w=
+ww.secondstate.io/articles/wasmedge-and-javascript"><font style=3D"vertical=
+-align: inherit;"><font style=3D"vertical-align: inherit;">JavaScript</font=
+></font></a><a class=3D"nav item" href=3D"https://www.secondstate.io/articl=
+es/manage-webassembly-apps-in-wasmedge-using-docker-tools"><font style=3D"v=
+ertical-align: inherit;"><font style=3D"vertical-align: inherit;">k8s</font=
+></font></a><a class=3D"nav item" href=3D"https://www.secondstate.io/articl=
+es/dapr-wasmedge-webassembly/"><font style=3D"vertical-align: inherit;"><fo=
+nt style=3D"vertical-align: inherit;">Dapr</font></font></a><a class=3D"nav=
+ item" href=3D"https://www.secondstate.io/articles/vercel-wasmedge-webassem=
+bly-rust/"><font style=3D"vertical-align: inherit;"><font style=3D"vertical=
+-align: inherit;">=E3=82=B5=E3=83=BC=E3=83=90=E3=83=BC=E3=83=AC=E3=82=B9</f=
+ont></font></a></nav></div></span></div></section>
+<section id=3D"content"><div class=3D"article-container"><section class=3D"=
+article header">
+    <h1 class=3D"article title"><font style=3D"vertical-align: inherit;"><f=
+ont style=3D"vertical-align: inherit;">Rust=E3=82=92=E4=BD=BF=E7=94=A8=E3=
+=81=97=E3=81=9F=E9=AB=98=E6=80=A7=E8=83=BDJavaScriptAPI=E3=81=AE=E4=BD=9C=
+=E6=88=90</font></font></h1><p class=3D"article date"><span class=3D"readin=
+g-time"><font style=3D"vertical-align: inherit;"><font style=3D"vertical-al=
+ign: inherit;">=E2=80=A2=E8=AA=AD=E3=82=80=E3=81=AE=E3=81=AB6=E5=88=86</fon=
+t></font></span></p></section>
+<article class=3D"article markdown-body"><p><em><font style=3D"vertical-ali=
+gn: inherit;"><font style=3D"vertical-align: inherit;">WasmEdge=E3=81=AF=E3=
+=80=81Rust=E3=81=AE=E3=83=91=E3=83=95=E3=82=A9=E3=83=BC=E3=83=9E=E3=83=B3=
+=E3=82=B9=E3=81=A8JavaScript=E3=81=AE=E4=BD=BF=E3=81=84=E3=82=84=E3=81=99=
+=E3=81=95=E3=82=92=E5=85=BC=E3=81=AD=E5=82=99=E3=81=88=E3=81=A6=E3=81=84=E3=
+=81=BE=E3=81=99</font></font></em></p>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">=E5=89=8D=E5=9B=9E=E3=81=AE=E8=A8=98=E4=BA=8B=E3=81=A7=E3=81=AF=
+=E3=80=81</font></font><a href=3D"https://www.secondstate.io/articles/embed=
+-javascript-in-rust/" target=3D"_blank"><font style=3D"vertical-align: inhe=
+rit;"><font style=3D"vertical-align: inherit;">JavaScript=E3=82=B3=E3=83=BC=
+=E3=83=89=E3=82=92Rust=E3=83=97=E3=83=AD=E3=82=B0=E3=83=A9=E3=83=A0=E3=81=
+=AB=E5=9F=8B=E3=82=81=E8=BE=BC=E3=82=80=E6=96=B9=E6=B3=95</font></font></a>=
+<font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: inh=
+erit;">=E3=81=AB=E3=81=A4=E3=81=84=E3=81=A6=E8=AA=AC=E6=98=8E=E3=81=97=E3=
+=81=BE=E3=81=97=E3=81=9F=E3=80=82</font><font style=3D"vertical-align: inhe=
+rit;">=E3=81=9F=E3=81=A0=E3=81=97=E3=80=81JavaScript=E9=96=8B=E7=99=BA=E8=
+=80=85=E3=81=AB=E3=81=A8=E3=81=A3=E3=81=A6=E3=81=AF=E3=80=81=E5=A4=9A=E3=81=
+=8F=E3=81=AE=E5=A0=B4=E5=90=88=E3=80=81Rust=E9=96=A2=E6=95=B0=E3=82=92JavaS=
+criptAPI=E3=81=AB=E7=B5=84=E3=81=BF=E8=BE=BC=E3=82=80=E5=BF=85=E8=A6=81=E3=
+=81=8C=E3=81=82=E3=82=8A=E3=81=BE=E3=81=99=E3=80=82</font><font style=3D"ve=
+rtical-align: inherit;">=E3=81=93=E3=82=8C=E3=81=AB=E3=82=88=E3=82=8A=E3=80=
+=81=E9=96=8B=E7=99=BA=E8=80=85=E3=81=AF=E3=80=8C=E7=B4=94=E7=B2=8B=E3=81=AA=
+JavaScript=E3=80=8D=E3=81=A7=E3=83=97=E3=83=AD=E3=82=B0=E3=83=A9=E3=83=A0=
+=E3=82=92=E4=BD=9C=E6=88=90=E3=81=97=E3=81=AA=E3=81=8C=E3=82=89=E3=80=81=E9=
+=AB=98=E6=80=A7=E8=83=BD=E3=81=AERust=E9=96=A2=E6=95=B0=E3=82=92=E5=88=A9=
+=E7=94=A8=E3=81=A7=E3=81=8D=E3=81=BE=E3=81=99=E3=80=82</font></font><a href=
+=3D"https://github.com/WasmEdge/WasmEdge" target=3D"_blank"><font style=3D"=
+vertical-align: inherit;"><font style=3D"vertical-align: inherit;">WasmEdge=
+ Runtime</font></font></a><font style=3D"vertical-align: inherit;"><font st=
+yle=3D"vertical-align: inherit;">=E3=82=92=E4=BD=BF=E7=94=A8</font><font st=
+yle=3D"vertical-align: inherit;">=E3=81=99=E3=82=8B=E3=81=A8=E3=80=81=E3=81=
+=BE=E3=81=95=E3=81=AB=E3=81=9D=E3=82=8C=E3=82=92=E5=AE=9F=E8=A1=8C=E3=81=A7=
+=E3=81=8D=E3=81=BE=E3=81=99=E3=80=82</font></font></p>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">=E6=AC=A1=E3=81=AB=E3=80=81=E3=81=84=E3=81=8F=E3=81=A4=E3=81=8B=
+=E3=81=AE=E4=BE=8B=E3=82=92=E8=A6=8B=E3=81=A6=E3=81=BF=E3=81=BE=E3=81=97=E3=
+=82=87=E3=81=86=E3=80=82</font></font><a href=3D"https://github.com/second-=
+state/wasmedge-quickjs/" target=3D"_blank"><font style=3D"vertical-align: i=
+nherit;"><font style=3D"vertical-align: inherit;">wasmedge-quickjs</font></=
+font></a><font style=3D"vertical-align: inherit;"><font style=3D"vertical-a=
+lign: inherit;"> Github=E3=83=AA=E3=83=9D=E3=82=B8=E3=83=88=E3=83=AA=E3=82=
+=92</font><font style=3D"vertical-align: inherit;">=E7=A2=BA=E8=AA=8D=E3=81=
+=97=E3=80=81</font></font><code>examples/embed_js</code><font style=3D"vert=
+ical-align: inherit;"><font style=3D"vertical-align: inherit;">=E3=83=95=E3=
+=82=A9=E3=83=AB=E3=83=80=E3=83=BC=E3=81=AB=E7=A7=BB=E5=8B=95=E3=81=97=E3=81=
+=A6=E3=83=95=E3=82=A9=E3=83=AD=E3=83=BC=E3=81=97=E3=81=A6=E3=81=8F=E3=81=A0=
+=E3=81=95=E3=81=84=E3=80=82</font></font></p>
+<pre><code>$ git clone https://github.com/second-state/wasmedge-quickjs<fon=
+t></font>
+$ cd examples/embed_js<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E3=81=93=E3=81=AE=E8=A8=98=E4=BA=8B=E3=81=AE=E4=BE=
+=8B=E3=82=92=E3=83=93=E3=83=AB=E3=83=89=E3=81=97=E3=81=A6=E5=AE=9F=E8=A1=8C=
+=E3=81=99=E3=82=8B=E3=81=AB=E3=81=AF=E3=80=81</font></font><a href=3D"https=
+://www.rust-lang.org/tools/install" target=3D"_blank"><font style=3D"vertic=
+al-align: inherit;"><font style=3D"vertical-align: inherit;">Rust</font></f=
+ont></a><font style=3D"vertical-align: inherit;"><font style=3D"vertical-al=
+ign: inherit;">=E3=81=A8</font></font><a href=3D"https://github.com/WasmEdg=
+e/WasmEdge/blob/master/docs/install.md" target=3D"_blank"><font style=3D"ve=
+rtical-align: inherit;"><font style=3D"vertical-align: inherit;">WasmEdge</=
+font></font></a><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E3=81=8C=E3=82=A4=E3=83=B3=E3=82=B9=E3=83=88=E3=83=
+=BC=E3=83=AB=E3=81=95=E3=82=8C=E3=81=A6=E3=81=84=E3=82=8B=E5=BF=85=E8=A6=81=
+=E3=81=8C=E3=81=82=E3=82=8A=E3=81=BE=E3=81=99=E3=80=82</font></font></p>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">=E3=83=87=E3=83=A2=E3=81=A7=E3=81=AF=E3=80=81</font></font><code>=
+embed_js</code><font style=3D"vertical-align: inherit;"><font style=3D"vert=
+ical-align: inherit;">Rust=E5=86=85=E3=81=ABJavaScript=E3=82=92=E5=9F=8B=E3=
+=82=81=E8=BE=BC=E3=82=80=E6=96=B9=E6=B3=95=E3=81=AB=E9=96=A2=E3=81=99=E3=82=
+=8B=E3=81=84=E3=81=8F=E3=81=A4=E3=81=8B=E3=81=AE=E7=95=B0=E3=81=AA=E3=82=8B=
+=E4=BE=8B=E3=82=92=E7=B4=B9=E4=BB=8B=E3=81=97=E3=81=BE=E3=81=99=E3=80=82</f=
+ont><font style=3D"vertical-align: inherit;">=E6=AC=A1=E3=81=AE=E3=82=88=E3=
+=81=86=E3=81=AB=E3=80=81=E3=81=99=E3=81=B9=E3=81=A6=E3=81=AE=E4=BE=8B=E3=82=
+=92=E4=BD=9C=E6=88=90=E3=81=97=E3=81=A6=E5=AE=9F=E8=A1=8C=E3=81=A7=E3=81=8D=
+=E3=81=BE=E3=81=99=E3=80=82</font></font></p>
+<pre><code>$ cargo build --target wasm32-wasi --release<font></font>
+$ wasmedge --dir .:. target/wasm32-wasi/release/embed_js.wasm<font></font>
+</code></pre><h2 id=3D"create-a-javascript-function-api"><font style=3D"ver=
+tical-align: inherit;"><font style=3D"vertical-align: inherit;">JavaScript=
+=E9=96=A2=E6=95=B0API=E3=82=92=E4=BD=9C=E6=88=90=E3=81=99=E3=82=8B</font></=
+font></h2>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">=E6=AC=A1=E3=81=AE=E3=82=B3=E3=83=BC=E3=83=89=E3=82=B9=E3=83=8B=
+=E3=83=9A=E3=83=83=E3=83=88=E3=81=AF=E3=80=81JavaScript=E3=82=A4=E3=83=B3=
+=E3=82=BF=E3=83=BC=E3=83=97=E3=83=AA=E3=82=BF=E3=83=BC=E3=81=ABAPI=E3=81=A8=
+=E3=81=97=E3=81=A6=E7=B5=84=E3=81=BF=E8=BE=BC=E3=82=80=E3=81=93=E3=81=A8=E3=
+=81=8C=E3=81=A7=E3=81=8D=E3=82=8BRust=E9=96=A2=E6=95=B0=E3=82=92=E5=AE=9A=
+=E7=BE=A9=E3=81=97=E3=81=A6=E3=81=84=E3=81=BE=E3=81=99=E3=80=82</font></fon=
+t></p>
+<pre><code>fn run_rust_function(ctx: &amp;mut Context) {<font></font>
+<font></font>
+    struct HelloFn;<font></font>
+    impl JsFn for HelloFn {<font></font>
+        fn call(_ctx: &amp;mut Context, _this_val: JsValue, argv: &amp;[JsV=
+alue]) -&gt; JsValue {<font></font>
+            println!("hello from rust");<font></font>
+            println!("argv=3D{:?}", argv);<font></font>
+            JsValue::UnDefined<font></font>
+        }<font></font>
+    }<font></font>
+    <font></font>
+    ...<font></font>
+}<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E6=AC=A1=E3=81=AE=E3=82=B3=E3=83=BC=E3=83=89=E3=82=
+=B9=E3=83=8B=E3=83=9A=E3=83=83=E3=83=88=E3=81=AF=E3=80=81=E3=81=93=E3=81=AE=
+Rust=E9=96=A2=E6=95=B0=E3=82=92JavaScript=E3=82=A4=E3=83=B3=E3=82=BF=E3=83=
+=BC=E3=83=97=E3=83=AA=E3=82=BF=E3=83=BC=E3=81=AB=E8=BF=BD=E5=8A=A0=E3=81=97=
+</font></font><code>hi()</code><font style=3D"vertical-align: inherit;"><fo=
+nt style=3D"vertical-align: inherit;">=E3=80=81JavaScript API=E3=81=A8=E3=
+=81=97=E3=81=A6=E5=90=8D=E5=89=8D=E3=82=92=E4=BB=98=E3=81=91=E3=81=A6=E3=80=
+=81JavaScript=E3=82=B3=E3=83=BC=E3=83=89=E3=81=8B=E3=82=89=E5=91=BC=E3=81=
+=B3=E5=87=BA=E3=81=99=E6=96=B9=E6=B3=95=E3=82=92=E7=A4=BA=E3=81=97=E3=81=A6=
+=E3=81=84=E3=81=BE=E3=81=99=E3=80=82</font></font></p>
+<pre><code>fn run_rust_function(ctx: &amp;mut Context) {<font></font>
+    ...<font></font>
+    <font></font>
+    let f =3D ctx.new_function::&lt;HelloFn&gt;("hello");<font></font>
+    ctx.get_global().set("hi", f.into());<font></font>
+    let code =3D r#"hi(1,2,3)"#;<font></font>
+    let r =3D ctx.eval_global_str(code);<font></font>
+    println!("return value:{:?}", r);<font></font>
+}<font></font>
+<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E5=AE=9F=E8=A1=8C=E7=B5=90=E6=9E=9C=E3=81=AF=E4=BB=
+=A5=E4=B8=8B=E3=81=AE=E3=81=A8=E3=81=8A=E3=82=8A=E3=81=A7=E3=81=99=E3=80=82=
+</font></font></p>
+<pre><code>hello from rust<font></font>
+argv=3D[Int(1), Int(2), Int(3)]<font></font>
+return value:UnDefined<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E3=81=93=E3=81=AE=E3=82=A2=E3=83=97=E3=83=AD=E3=83=
+=BC=E3=83=81=E3=82=92=E4=BD=BF=E7=94=A8=E3=81=99=E3=82=8B=E3=81=A8=E3=80=81=
+=E3=82=AB=E3=82=B9=E3=82=BF=E3=83=9E=E3=82=A4=E3=82=BA=E3=81=95=E3=82=8C=E3=
+=81=9FAPI=E9=96=A2=E6=95=B0=E3=82=92=E4=BD=BF=E7=94=A8=E3=81=97=E3=81=A6Jav=
+aScript=E3=82=A4=E3=83=B3=E3=82=BF=E3=83=BC=E3=83=97=E3=83=AA=E3=82=BF=E3=
+=83=BC=E3=82=92=E4=BD=9C=E6=88=90=E3=81=A7=E3=81=8D=E3=81=BE=E3=81=99=E3=80=
+=82</font><font style=3D"vertical-align: inherit;">=E3=82=A4=E3=83=B3=E3=82=
+=BF=E3=83=97=E3=83=AA=E3=82=BF=E3=81=AFWasmEdge=E5=86=85=E3=81=A7=E5=AE=9F=
+=E8=A1=8C=E3=81=95=E3=82=8C=E3=80=81CLI=E3=81=BE=E3=81=9F=E3=81=AF=E3=83=8D=
+=E3=83=83=E3=83=88=E3=83=AF=E3=83=BC=E3=82=AF=E3=81=8B=E3=82=89=E3=81=9D=E3=
+=81=AE=E3=82=88=E3=81=86=E3=81=AAAPI=E9=96=A2=E6=95=B0=E3=82=92=E5=91=BC=E3=
+=81=B3=E5=87=BA=E3=81=99JavaScript=E3=82=B3=E3=83=BC=E3=83=89=E3=82=92=E5=
+=AE=9F=E8=A1=8C=E3=81=A7=E3=81=8D=E3=81=BE=E3=81=99=E3=80=82</font></font><=
+/p>
+<h2 id=3D"create-a-javascript-object-api"><font style=3D"vertical-align: in=
+herit;"><font style=3D"vertical-align: inherit;">JavaScript=E3=82=AA=E3=83=
+=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88API=E3=82=92=E4=BD=9C=E6=88=90=E3=81=
+=99=E3=82=8B</font></font></h2>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">JavaScript API=E3=81=AE=E8=A8=AD=E8=A8=88=E3=81=A7=E3=81=AF=E3=80=
+=81=E3=83=87=E3=83=BC=E3=82=BF=E3=81=A8=E9=96=A2=E6=95=B0=E3=81=AE=E4=B8=A1=
+=E6=96=B9=E3=82=92=E3=82=AB=E3=83=97=E3=82=BB=E3=83=AB=E5=8C=96=E3=81=99=E3=
+=82=8B=E3=82=AA=E3=83=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88=E3=82=92=E6=8F=
+=90=E4=BE=9B=E3=81=99=E3=82=8B=E5=BF=85=E8=A6=81=E3=81=8C=E3=81=82=E3=82=8B=
+=E5=A0=B4=E5=90=88=E3=81=8C=E3=81=82=E3=82=8A=E3=81=BE=E3=81=99=E3=80=82</f=
+ont><font style=3D"vertical-align: inherit;">=E6=AC=A1=E3=81=AE=E4=BE=8B=E3=
+=81=A7=E3=81=AF=E3=80=81JavaScriptAPI=E3=81=AERust=E9=96=A2=E6=95=B0=E3=82=
+=92=E5=AE=9A=E7=BE=A9=E3=81=97=E3=81=BE=E3=81=99=E3=80=82</font></font></p>
+<pre><code>fn rust_new_object_and_js_call(ctx: &amp;mut Context) {<font></f=
+ont>
+<font></font>
+    struct ObjectFn;<font></font>
+    impl JsFn for ObjectFn {<font></font>
+        fn call(_ctx: &amp;mut Context, this_val: JsValue, argv: &amp;[JsVa=
+lue]) -&gt; JsValue {<font></font>
+            println!("hello from rust");<font></font>
+            println!("argv=3D{:?}", argv);<font></font>
+            if let JsValue::Object(obj) =3D this_val {<font></font>
+                let obj_map =3D obj.to_map();<font></font>
+                println!("this=3D{:#?}", obj_map);<font></font>
+            }<font></font>
+            JsValue::UnDefined<font></font>
+        }<font></font>
+    }<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E6=AC=A1=E3=81=AB=E3=80=81Rust=E5=81=B4=E3=81=A7=E3=
+=80=8C=E3=82=AA=E3=83=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88=E3=80=8D=E3=82=
+=92=E4=BD=9C=E6=88=90=E3=81=97=E3=80=81=E3=81=9D=E3=81=AE=E3=83=87=E3=83=BC=
+=E3=82=BF=E3=83=95=E3=82=A3=E3=83=BC=E3=83=AB=E3=83=89=E3=82=92=E8=A8=AD=E5=
+=AE=9A=E3=81=97=E3=81=A6=E3=81=8B=E3=82=89=E3=80=81Rust=E9=96=A2=E6=95=B0=
+=E3=82=92=E3=82=AA=E3=83=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88=E3=81=AB=E9=
+=96=A2=E9=80=A3=E4=BB=98=E3=81=91=E3=82=89=E3=82=8C=E3=81=9FJavaScript=E9=
+=96=A2=E6=95=B0=E3=81=A8=E3=81=97=E3=81=A6=E7=99=BB=E9=8C=B2=E3=81=97=E3=81=
+=BE=E3=81=99=E3=80=82</font></font></p>
+<pre><code>    let mut obj =3D ctx.new_object();<font></font>
+    obj.set("a", 1.into());<font></font>
+    obj.set("b", ctx.new_string("abc").into());<font></font>
+    <font></font>
+    let f =3D ctx.new_function::&lt;ObjectFn&gt;("anything");<font></font>
+    obj.set("f", f.into());<font></font>
+<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E6=AC=A1=E3=81=AB=E3=80=81Rust=E3=81=AE=E3=80=8C=E3=
+=82=AA=E3=83=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88=E3=80=8D=E3=82=92</font=
+></font><code>test_obj</code><font style=3D"vertical-align: inherit;"><font=
+ style=3D"vertical-align: inherit;">JavaScript=E3=82=A4=E3=83=B3=E3=82=BF=
+=E3=83=BC=E3=83=97=E3=83=AA=E3=82=BF=E3=83=BC=E3=81=A7JavaScript=E3=82=AA=
+=E3=83=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88=E3=81=A8=E3=81=97=E3=81=A6=E4=
+=BD=BF=E7=94=A8=E3=81=A7=E3=81=8D=E3=82=8B=E3=82=88=E3=81=86=E3=81=AB=E3=81=
+=97=E3=81=BE=E3=81=99=E3=80=82</font></font></p>
+<pre><code>    ctx.get_global().set("test_obj", obj.into());
+</code></pre><p><font style=3D"vertical-align: inherit;"></font><code>test_=
+obj</code><font style=3D"vertical-align: inherit;"><font style=3D"vertical-=
+align: inherit;">JavaScript=E3=82=B3=E3=83=BC=E3=83=89=E3=81=A7=E3=80=81API=
+=E3=81=AE=E4=B8=80=E9=83=A8=E3=81=A8=E3=81=97=E3=81=A6</font><font style=3D=
+"vertical-align: inherit;">=E7=9B=B4=E6=8E=A5=E4=BD=BF=E7=94=A8=E3=81=A7=E3=
+=81=8D=E3=82=8B=E3=82=88=E3=81=86=E3=81=AB=E3=81=AA=E3=82=8A=E3=81=BE=E3=81=
+=97=E3=81=9F=E3=80=82</font></font></p>
+<pre><code>    let code =3D r#"<font></font>
+      print('test_obj keys=3D',Object.keys(test_obj))<font></font>
+      print('test_obj.a=3D',test_obj.a)<font></font>
+      print('test_obj.b=3D',test_obj.b)<font></font>
+      test_obj.f(1,2,3,"hi")<font></font>
+    "#;<font></font>
+<font></font>
+    ctx.eval_global_str(code);<font></font>
+}<font></font>
+<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E5=AE=9F=E8=A1=8C=E7=B5=90=E6=9E=9C=E3=81=AF=E4=BB=
+=A5=E4=B8=8B=E3=81=AE=E3=81=A8=E3=81=8A=E3=82=8A=E3=81=A7=E3=81=99=E3=80=82=
+</font></font></p>
+<pre><code>test_obj keys=3D a,b,f<font></font>
+test_obj.a=3D 1<font></font>
+test_obj.b=3D abc<font></font>
+hello from rust<font></font>
+argv=3D[Int(1), Int(2), Int(3), String(JsString(hi))]<font></font>
+this=3DOk(<font></font>
+    {<font></font>
+        "a": Int(<font></font>
+            1,<font></font>
+        ),<font></font>
+        "b": String(<font></font>
+            JsString(<font></font>
+                abc,<font></font>
+            ),<font></font>
+        ),<font></font>
+        "f": Function(<font></font>
+            JsFunction(<font></font>
+                function anything() {<font></font>
+                    [native code]<font></font>
+                },<font></font>
+            ),<font></font>
+        ),<font></font>
+    },<font></font>
+)<font></font>
+</code></pre><h2 id=3D"a-complete-javascript-object-api"><font style=3D"ver=
+tical-align: inherit;"><font style=3D"vertical-align: inherit;">=E5=AE=8C=
+=E5=85=A8=E3=81=AAJavaScript=E3=82=AA=E3=83=96=E3=82=B8=E3=82=A7=E3=82=AF=
+=E3=83=88API</font></font></h2>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">=E5=89=8D=E3=81=AE=E4=BE=8B=E3=81=A7=E3=81=AF=E3=80=81Rust=E3=81=
+=8B=E3=82=89JavaScriptAPI=E3=82=92=E4=BD=9C=E6=88=90=E3=81=99=E3=82=8B=E3=
+=81=9F=E3=82=81=E3=81=AE=E7=B0=A1=E5=8D=98=E3=81=AA=E4=BE=8B=E3=82=92=E7=A4=
+=BA=E3=81=97=E3=81=BE=E3=81=97=E3=81=9F=E3=80=82</font><font style=3D"verti=
+cal-align: inherit;">=E3=81=93=E3=81=AE=E4=BE=8B=E3=81=A7=E3=81=AF=E3=80=81=
+=E5=AE=8C=E5=85=A8=E3=81=AARust=E3=83=A2=E3=82=B8=E3=83=A5=E3=83=BC=E3=83=
+=AB=E3=82=92=E4=BD=9C=E6=88=90=E3=81=97=E3=80=81JavaScript=E3=82=AA=E3=83=
+=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88API=E3=81=A8=E3=81=97=E3=81=A6=E4=BD=
+=BF=E7=94=A8=E3=81=A7=E3=81=8D=E3=82=8B=E3=82=88=E3=81=86=E3=81=AB=E3=81=97=
+=E3=81=BE=E3=81=99=E3=80=82</font><font style=3D"vertical-align: inherit;">=
+=E3=83=97=E3=83=AD=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88=E3=81=AF</font></fon=
+t><a href=3D"https://github.com/second-state/wasmedge-quickjs/tree/main/exa=
+mples/embed_rust_module" target=3D"_blank"><font style=3D"vertical-align: i=
+nherit;"><font style=3D"vertical-align: inherit;">examples/embed_rust_modul=
+e</font></font></a><font style=3D"vertical-align: inherit;"><font style=3D"=
+vertical-align: inherit;">=E3=83=95=E3=82=A9=E3=83=AB=E3=83=80=E3=83=BC=E3=
+=81=AB=E3=81=82=E3=82=8A=E3=81=BE=E3=81=99=E3=80=82</font><font style=3D"ve=
+rtical-align: inherit;">WasmEdge=E3=81=A7=E6=A8=99=E6=BA=96=E3=81=AERust=E3=
+=82=A2=E3=83=97=E3=83=AA=E3=82=B1=E3=83=BC=E3=82=B7=E3=83=A7=E3=83=B3=E3=81=
+=A8=E3=81=97=E3=81=A6=E3=83=93=E3=83=AB=E3=83=89=E3=81=97=E3=81=A6=E5=AE=9F=
+=E8=A1=8C=E3=81=A7=E3=81=8D=E3=81=BE=E3=81=99=E3=80=82</font></font></p>
+<pre><code>$ cargo build --target wasm32-wasi --release<font></font>
+$ wasmedge --dir .:. target/wasm32-wasi/release/embed_rust_module.wasm<font=
+></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E3=82=AA=E3=83=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=
+=88=E3=81=AERust=E5=AE=9F=E8=A3=85=E3=81=AF=E3=80=81=E6=AC=A1=E3=81=AE=E3=
+=82=88=E3=81=86=E3=81=AA=E3=83=A2=E3=82=B8=E3=83=A5=E3=83=BC=E3=83=AB=E3=81=
+=A7=E3=81=99=E3=80=82</font><font style=3D"vertical-align: inherit;">=E3=83=
+=87=E3=83=BC=E3=82=BF=E3=83=95=E3=82=A3=E3=83=BC=E3=83=AB=E3=83=89=E3=80=81=
+=E3=82=B3=E3=83=B3=E3=82=B9=E3=83=88=E3=83=A9=E3=82=AF=E3=82=BF=E3=83=BC=E3=
+=80=81=E3=82=B2=E3=83=83=E3=82=BF=E3=83=BC=E3=81=A8=E3=82=BB=E3=83=83=E3=82=
+=BF=E3=83=BC=E3=80=81=E3=81=8A=E3=82=88=E3=81=B3=E9=96=A2=E6=95=B0=E3=81=8C=
+=E3=81=82=E3=82=8A=E3=81=BE=E3=81=99=E3=80=82</font></font></p>
+<pre><code>mod point {<font></font>
+    use wasmedge_quickjs::*;<font></font>
+<font></font>
+    #[derive(Debug)]<font></font>
+    struct Point(i32, i32);<font></font>
+<font></font>
+    struct PointDef;<font></font>
+<font></font>
+    impl JsClassDef&lt;Point&gt; for PointDef {<font></font>
+        const CLASS_NAME: &amp;'static str =3D "Point\0";<font></font>
+        const CONSTRUCTOR_ARGC: u8 =3D 2;<font></font>
+<font></font>
+        fn constructor(_: &amp;mut Context, argv: &amp;[JsValue]) -&gt; Opt=
+ion&lt;Point&gt; {<font></font>
+            println!("rust-&gt; new Point {:?}", argv);<font></font>
+            let x =3D argv.get(0);<font></font>
+            let y =3D argv.get(1);<font></font>
+            if let ((Some(JsValue::Int(ref x)), Some(JsValue::Int(ref y))))=
+ =3D (x, y) {<font></font>
+                Some(Point(*x, *y))<font></font>
+            } else {<font></font>
+                None<font></font>
+            }<font></font>
+        }<font></font>
+<font></font>
+        fn proto_init(p: &amp;mut JsClassProto&lt;Point, PointDef&gt;) {<fo=
+nt></font>
+            struct X;<font></font>
+            impl JsClassGetterSetter&lt;Point&gt; for X {<font></font>
+                const NAME: &amp;'static str =3D "x\0";<font></font>
+<font></font>
+                fn getter(_: &amp;mut Context, this_val: &amp;mut Point) -&=
+gt; JsValue {<font></font>
+                    println!("rust-&gt; get x");<font></font>
+                    this_val.0.into()<font></font>
+                }<font></font>
+<font></font>
+                fn setter(_: &amp;mut Context, this_val: &amp;mut Point, va=
+l: JsValue) {<font></font>
+                    println!("rust-&gt; set x:{:?}", val);<font></font>
+                    if let JsValue::Int(x) =3D val {<font></font>
+                        this_val.0 =3D x<font></font>
+                    }<font></font>
+                }<font></font>
+            }<font></font>
+<font></font>
+            struct Y;<font></font>
+            impl JsClassGetterSetter&lt;Point&gt; for Y {<font></font>
+                const NAME: &amp;'static str =3D "y\0";<font></font>
+<font></font>
+                fn getter(_: &amp;mut Context, this_val: &amp;mut Point) -&=
+gt; JsValue {<font></font>
+                    println!("rust-&gt; get y");<font></font>
+                    this_val.1.into()<font></font>
+                }<font></font>
+<font></font>
+                fn setter(_: &amp;mut Context, this_val: &amp;mut Point, va=
+l: JsValue) {<font></font>
+                    println!("rust-&gt; set y:{:?}", val);<font></font>
+                    if let JsValue::Int(y) =3D val {<font></font>
+                        this_val.1 =3D y<font></font>
+                    }<font></font>
+                }<font></font>
+            }<font></font>
+<font></font>
+            struct FnPrint;<font></font>
+            impl JsMethod&lt;Point&gt; for FnPrint {<font></font>
+                const NAME: &amp;'static str =3D "pprint\0";<font></font>
+                const LEN: u8 =3D 0;<font></font>
+<font></font>
+                fn call(_: &amp;mut Context, this_val: &amp;mut Point, _arg=
+v: &amp;[JsValue]) -&gt; JsValue {<font></font>
+                    println!("rust-&gt; pprint: {:?}", this_val);<font></fo=
+nt>
+                    JsValue::Int(1)<font></font>
+                }<font></font>
+            }<font></font>
+<font></font>
+            p.add_getter_setter(X);<font></font>
+            p.add_getter_setter(Y);<font></font>
+            p.add_function(FnPrint);<font></font>
+        }<font></font>
+    }<font></font>
+<font></font>
+    struct PointModule;<font></font>
+    impl ModuleInit for PointModule {<font></font>
+        fn init_module(ctx: &amp;mut Context, m: &amp;mut JsModuleDef) {<fo=
+nt></font>
+            m.add_export("Point\0", PointDef::class_value(ctx));<font></fon=
+t>
+        }<font></font>
+    }<font></font>
+<font></font>
+    pub fn init_point_module(ctx: &amp;mut Context) {<font></font>
+        ctx.register_class(PointDef);<font></font>
+        ctx.register_module("point\0", PointModule, &amp;["Point\0"]);<font=
+></font>
+    }<font></font>
+}<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E3=82=A4=E3=83=B3=E3=82=BF=E3=83=BC=E3=83=97=E3=83=
+=AA=E3=82=BF=E3=83=BC=E3=81=AE=E5=AE=9F=E8=A3=85=E3=81=A7=E3=81=AF=E3=80=81=
+=E6=9C=80=E5=88=9D=E3=81=AB=E5=91=BC=E3=81=B3=E5=87=BA=E3=81=97</font></fon=
+t><code>point::init_point_module</code><font style=3D"vertical-align: inher=
+it;"><font style=3D"vertical-align: inherit;">=E3=81=A6Rust=E3=83=A2=E3=82=
+=B8=E3=83=A5=E3=83=BC=E3=83=AB=E3=82=92JavaScript=E3=82=B3=E3=83=B3=E3=83=
+=86=E3=82=AD=E3=82=B9=E3=83=88=E3=81=AB=E7=99=BB=E9=8C=B2=E3=81=97=E3=80=81=
+=E6=AC=A1=E3=81=AB=E3=82=AA=E3=83=96=E3=82=B8=E3=82=A7=E3=82=AF=E3=83=88=E3=
+=82=92=E4=BD=BF=E7=94=A8=E3=81=99=E3=82=8B=E3=81=A0=E3=81=91=E3=81=AEJavaSc=
+ript=E3=83=97=E3=83=AD=E3=82=B0=E3=83=A9=E3=83=A0=E3=82=92=E5=AE=9F=E8=A1=
+=8C=E3=81=A7=E3=81=8D</font></font><code>point</code><font style=3D"vertica=
+l-align: inherit;"><font style=3D"vertical-align: inherit;">=E3=81=BE=E3=81=
+=99=E3=80=82</font></font></p>
+<pre><code>use wasmedge_quickjs::*;<font></font>
+fn main() {<font></font>
+    let mut ctx =3D Context::new();<font></font>
+    point::init_point_module(&amp;mut ctx);<font></font>
+<font></font>
+    let code =3D r#"<font></font>
+      import('point').then((point)=3D&gt;{<font></font>
+        let p0 =3D new point.Point(1,2)<font></font>
+        print("js-&gt;",p0.x,p0.y)<font></font>
+        p0.pprint()<font></font>
+        try{<font></font>
+            let p =3D new point.Point()<font></font>
+            print("js-&gt; p:",p)<font></font>
+            print("js-&gt;",p.x,p.y)<font></font>
+            p.x=3D2<font></font>
+            p.pprint()<font></font>
+        } catch(e) {<font></font>
+            print("An error has been caught");<font></font>
+            print(e)<font></font>
+        }    <font></font>
+      })<font></font>
+    "#;<font></font>
+<font></font>
+    ctx.eval_global_str(code);<font></font>
+    ctx.promise_loop_poll();<font></font>
+}<font></font>
+</code></pre><p><font style=3D"vertical-align: inherit;"><font style=3D"ver=
+tical-align: inherit;">=E4=B8=8A=E8=A8=98=E3=82=A2=E3=83=97=E3=83=AA=E3=82=
+=B1=E3=83=BC=E3=82=B7=E3=83=A7=E3=83=B3=E3=81=AE=E5=AE=9F=E8=A1=8C=E7=B5=90=
+=E6=9E=9C=E3=81=AF=E4=BB=A5=E4=B8=8B=E3=81=AE=E3=81=A8=E3=81=8A=E3=82=8A=E3=
+=81=A7=E3=81=99=E3=80=82</font></font></p>
+<pre><code>rust-&gt; new Point [Int(1), Int(2)]<font></font>
+rust-&gt; get x<font></font>
+rust-&gt; get y<font></font>
+js-&gt; 1 2<font></font>
+rust-&gt; pprint: Point(1, 2)<font></font>
+rust-&gt; new Point []<font></font>
+js-&gt; p: undefined<font></font>
+An error has been caught<font></font>
+TypeError: cannot read property 'x' of undefined<font></font>
+</code></pre><h2 id=3D"whats-next"><font style=3D"vertical-align: inherit;"=
+><font style=3D"vertical-align: inherit;">=E6=AC=A1=E3=81=AF=E4=BD=95=E3=81=
+=A7=E3=81=99=E3=81=8B</font></font></h2>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">Rust=E9=96=A2=E6=95=B0=E3=81=A8=E3=83=A2=E3=82=B8=E3=83=A5=E3=83=
+=BC=E3=83=AB=E3=82=92=E4=BD=BF=E7=94=A8=E3=81=97=E3=81=A6JavaScriptAPI=E3=
+=82=92=E5=AE=9F=E8=A3=85=E3=81=99=E3=82=8B=E3=81=93=E3=81=A8=E3=81=AF=E5=BC=
+=B7=E5=8A=9B=E3=81=AA=E3=82=A2=E3=82=A4=E3=83=87=E3=82=A2=E3=81=A7=E3=81=99=
+=E3=80=82</font><font style=3D"vertical-align: inherit;">=E3=81=93=E3=82=8C=
+=E3=81=AB=E3=82=88=E3=82=8A=E3=80=81WasmEdgeRuntime=E3=81=AFJavaScript=E3=
+=82=A2=E3=83=97=E3=83=AA=E3=82=B1=E3=83=BC=E3=82=B7=E3=83=A7=E3=83=B3=E3=81=
+=AE=E3=83=91=E3=83=95=E3=82=A9=E3=83=BC=E3=83=9E=E3=83=B3=E3=82=B9=E3=82=92=
+=E5=A4=A7=E5=B9=85=E3=81=AB=E5=90=91=E4=B8=8A=E3=81=95=E3=81=9B=E3=82=8B=E3=
+=81=93=E3=81=A8=E3=81=8C=E3=81=A7=E3=81=8D=E3=81=BE=E3=81=99=E3=80=82</font=
+><font style=3D"vertical-align: inherit;">=E3=81=9F=E3=81=A0=E3=81=97=E3=80=
+=81=E3=81=93=E3=82=8C=E3=82=89=E3=81=AERust=E9=96=A2=E6=95=B0=E3=81=AFWebAs=
+sembly=E3=83=90=E3=82=A4=E3=83=88=E3=82=B3=E3=83=BC=E3=83=89=E3=81=AB=E3=82=
+=B3=E3=83=B3=E3=83=91=E3=82=A4=E3=83=AB=E3=81=99=E3=82=8B=E5=BF=85=E8=A6=81=
+=E3=81=8C=E3=81=82=E3=82=8A=E3=81=BE=E3=81=99=E3=80=82</font><font style=3D=
+"vertical-align: inherit;">AI=E6=8E=A8=E8=AB=96=E3=81=AA=E3=81=A9=E3=81=AE=
+=E4=B8=80=E9=83=A8=E3=81=AE=E9=96=A2=E6=95=B0=E3=81=A7=E3=81=AF=E3=80=81Was=
+mEdge=E3=81=8B=E3=82=89=E7=9B=B4=E6=8E=A5=E3=83=8D=E3=82=A4=E3=83=86=E3=82=
+=A3=E3=83=96C=E3=83=A9=E3=82=A4=E3=83=96=E3=83=A9=E3=83=AA=E9=96=A2=E6=95=
+=B0=E3=82=92=E5=91=BC=E3=81=B3=E5=87=BA=E3=81=99=E6=96=B9=E3=81=8C=E5=8A=B9=
+=E7=8E=87=E7=9A=84=E3=81=A7=E3=81=99=E3=80=82</font></font><a href=3D"https=
+://www.secondstate.io/articles/call-native-functions-from-javascript/" targ=
+et=3D"_blank"><font style=3D"vertical-align: inherit;"><font style=3D"verti=
+cal-align: inherit;">=E6=AC=A1=E3=81=AE=E8=A8=98=E4=BA=8B</font></font></a>=
+<font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: inh=
+erit;">=E3=81=A7=E3=81=AF=E3=80=81</font><font style=3D"vertical-align: inh=
+erit;">WasmEdge=E3=82=92=E3=82=A4=E3=83=B3=E3=82=B9=E3=83=88=E3=83=AB=E3=83=
+=A1=E3=83=B3=E3=83=88=E5=8C=96=E3=81=97=E3=81=A6C=E3=83=8D=E3=82=A4=E3=83=
+=86=E3=82=A3=E3=83=96=E9=96=A2=E6=95=B0=E3=82=92=E3=82=B5=E3=83=9D=E3=83=BC=
+=E3=83=88=E3=81=97=E3=80=81=E3=81=9D=E3=82=8C=E3=82=89=E3=81=AE=E9=96=A2=E6=
+=95=B0=E3=82=92Rust=E3=81=8A=E3=82=88=E3=81=B3JavaScriptAPI=E3=81=A8=E3=81=
+=97=E3=81=A6=E5=85=AC=E9=96=8B=E3=81=99=E3=82=8B=E6=96=B9=E6=B3=95=E3=81=AB=
+=E3=81=A4=E3=81=84=E3=81=A6=E8=AA=AC=E6=98=8E=E3=81=97=E3=81=BE=E3=81=99=E3=
+=80=82</font></font></p>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">=E3=81=93=E3=81=AE=E3=82=B7=E3=83=AA=E3=83=BC=E3=82=BA=E3=81=AE=
+=E8=A8=98=E4=BA=8B=EF=BC=9A</font></font></p>
+<ul>
+<li><a href=3D"https://www.secondstate.io/articles/run-javascript-in-webass=
+embly-with-wasmedge/" target=3D"_blank"><font style=3D"vertical-align: inhe=
+rit;"><font style=3D"vertical-align: inherit;">WasmEdge=E3=82=92=E4=BD=BF=
+=E7=94=A8=E3=81=97=E3=81=A6WebAssembly=E3=81=A7JavaScript=E3=82=92=E5=AE=9F=
+=E8=A1=8C=E3=81=99=E3=82=8B</font></font></a></li>
+<li><a href=3D"https://www.secondstate.io/articles/embed-javascript-in-rust=
+/" target=3D"_blank"><font style=3D"vertical-align: inherit;"><font style=
+=3D"vertical-align: inherit;">JavaScript=E3=82=92Rust=E3=82=A2=E3=83=97=E3=
+=83=AA=E3=81=AB=E7=B5=84=E3=81=BF=E8=BE=BC=E3=82=80</font></font></a></li>
+<li><a href=3D"https://www.secondstate.io/articles/embed-rust-in-javascript=
+/" target=3D"_blank"><font style=3D"vertical-align: inherit;"><font style=
+=3D"vertical-align: inherit;">Rust=E3=82=92=E4=BD=BF=E7=94=A8=E3=81=97=E3=
+=81=9F=E9=AB=98=E6=80=A7=E8=83=BDJavaScriptAPI=E3=81=AE=E4=BD=9C=E6=88=90</=
+font></font></a></li>
+<li><a href=3D"https://www.secondstate.io/articles/call-native-functions-fr=
+om-javascript/" target=3D"_blank"><font style=3D"vertical-align: inherit;">=
+<font style=3D"vertical-align: inherit;">JavaScript=E3=81=8B=E3=82=89=E3=83=
+=8D=E3=82=A4=E3=83=86=E3=82=A3=E3=83=96=E9=96=A2=E6=95=B0=E3=82=92=E5=91=BC=
+=E3=81=B3=E5=87=BA=E3=81=99</font></font></a></li>
+</ul>
+<p><font style=3D"vertical-align: inherit;"><font style=3D"vertical-align: =
+inherit;">=E3=82=AF=E3=83=A9=E3=82=A6=E3=83=89=E3=83=8D=E3=82=A4=E3=83=86=
+=E3=82=A3=E3=83=96=E3=81=AEWebAssembly=E3=81=AEJavaScript=E3=81=AF=E3=80=81=
+=E6=AC=A1=E4=B8=96=E4=BB=A3=E3=81=AE=E3=82=AF=E3=83=A9=E3=82=A6=E3=83=89=E3=
+=81=8A=E3=82=88=E3=81=B3=E3=82=A8=E3=83=83=E3=82=B8=E3=82=B3=E3=83=B3=E3=83=
+=94=E3=83=A5=E3=83=BC=E3=83=86=E3=82=A3=E3=83=B3=E3=82=B0=E3=82=A4=E3=83=B3=
+=E3=83=95=E3=83=A9=E3=82=B9=E3=83=88=E3=83=A9=E3=82=AF=E3=83=81=E3=83=A3=E3=
+=81=AE=E6=96=B0=E3=81=9F=E3=81=AA=E5=88=86=E9=87=8E=E3=81=A7=E3=81=99=E3=80=
+=82</font><font style=3D"vertical-align: inherit;">=E3=81=BE=E3=81=A0=E5=A7=
+=8B=E3=81=BE=E3=81=A3=E3=81=9F=E3=81=B0=E3=81=8B=E3=82=8A=E3=81=A7=E3=81=99=
+=EF=BC=81</font><font style=3D"vertical-align: inherit;">=E8=88=88=E5=91=B3=
+=E3=81=8C=E3=81=82=E3=82=8B=E5=A0=B4=E5=90=88=E3=81=AF=E3=80=81</font></fon=
+t><a href=3D"https://github.com/WasmEdge/WasmEdge" target=3D"_blank"><font =
+style=3D"vertical-align: inherit;"><font style=3D"vertical-align: inherit;"=
+>WasmEdge</font></font></a><font style=3D"vertical-align: inherit;"><font s=
+tyle=3D"vertical-align: inherit;">=E3=83=97=E3=83=AD=E3=82=B8=E3=82=A7=E3=
+=82=AF=E3=83=88=E3=81=AB=E5=8F=82=E5=8A=A0=E3=81=97=E3=81=A6=E3=81=8F=E3=81=
+=A0=E3=81=95=E3=81=84=EF=BC=88=E3=81=BE=E3=81=9F=E3=81=AF=E3=80=81=E6=A9=9F=
+=E8=83=BD=E8=A6=81=E6=B1=82=E3=81=AE=E5=95=8F=E9=A1=8C=E3=82=92=E6=8F=90=E8=
+=B5=B7=E3=81=97=E3=81=A6=E3=80=81=E5=BF=85=E8=A6=81=E3=81=AA=E3=82=82=E3=81=
+=AE=E3=82=92=E6=95=99=E3=81=88=E3=81=A6=E3=81=8F=E3=81=A0=E3=81=95=E3=81=84=
+=EF=BC=89=E3=80=82</font></font></p>
+</article><section class=3D"article labels"><a class=3D"category" href=3D"h=
+ttps://www.secondstate.io/categories/product/"><font style=3D"vertical-alig=
+n: inherit;"><font style=3D"vertical-align: inherit;">=E8=A3=BD=E5=93=81</f=
+ont></font></a><a class=3D"category" href=3D"https://www.secondstate.io/cat=
+egories/wasmedge/"><font style=3D"vertical-align: inherit;"><font style=3D"=
+vertical-align: inherit;">WasmEdge</font></font></a><a class=3D"tag" href=
+=3D"https://www.secondstate.io/tags/javascript/"><font style=3D"vertical-al=
+ign: inherit;"><font style=3D"vertical-align: inherit;">JavaScript</font></=
+font></a><a class=3D"tag" href=3D"https://www.secondstate.io/tags/rust/"><f=
+ont style=3D"vertical-align: inherit;"><font style=3D"vertical-align: inher=
+it;">=E3=81=95=E3=81=B3</font></font></a></section><section class=3D"articl=
+e author"><img class=3D"avatar" src=3D"https://www.secondstate.io/assets/im=
+g/logo.png" alt=3D""><div class=3D"bio"><font style=3D"vertical-align: inhe=
+rit;"><font style=3D"vertical-align: inherit;">=E8=87=AA=E5=8B=95=E8=BB=8A=
+=E3=80=81=E3=82=AF=E3=83=A9=E3=82=A6=E3=83=89=E3=80=81AI=E3=80=81=E3=81=8A=
+=E3=82=88=E3=81=B3=E3=83=96=E3=83=AD=E3=83=83=E3=82=AF=E3=83=81=E3=82=A7=E3=
+=83=BC=E3=83=B3=E3=82=A2=E3=83=97=E3=83=AA=E3=82=B1=E3=83=BC=E3=82=B7=E3=83=
+=A7=E3=83=B3=E5=90=91=E3=81=91=E3=81=AE=E9=AB=98=E6=80=A7=E8=83=BD=E3=81=A7=
+=E6=8B=A1=E5=BC=B5=E5=8F=AF=E8=83=BD=E3=81=A7=E3=83=8F=E3=83=BC=E3=83=89=E3=
+=82=A6=E3=82=A7=E3=82=A2=E3=81=AB=E6=9C=80=E9=81=A9=E5=8C=96=E3=81=95=E3=82=
+=8C=E3=81=9FWebAssembly=E4=BB=AE=E6=83=B3=E3=83=9E=E3=82=B7=E3=83=B3</font>=
+</font></div><div class=3D"details"><a class=3D"item" href=3D"https://githu=
+b.com/second-state" target=3D"_blank"><span class=3D"iconfont icon-github">=
+</span><font style=3D"vertical-align: inherit;"><font style=3D"vertical-ali=
+gn: inherit;">&nbsp;=E7=AC=AC2=E7=8A=B6=E6=85=8B</font></font></a><a class=
+=3D"item" href=3D"https://twitter.com/secondstateinc" target=3D"_blank"><sp=
+an class=3D"iconfont icon-twitter"></span><font style=3D"vertical-align: in=
+herit;"><font style=3D"vertical-align: inherit;">&nbsp;@secondstateinc</fon=
+t></font></a></div>
+</section></div>
+<div class=3D"article bottom"></div></section><section id=3D"footer"><div c=
+lass=3D"footer-wrap">
+    <p class=3D"copyright"><font style=3D"vertical-align: inherit;"><font s=
+tyle=3D"vertical-align: inherit;">=C2=A92020-2021=E7=AC=AC2=E5=B7=9E</font>=
+</font></p>
+</div>
+</section>
+
+<div id=3D"goog-gt-tt" class=3D"skiptranslate" dir=3D"ltr"><div style=3D"pa=
+dding: 8px;"><div><div class=3D"logo"><img src=3D"https://www.gstatic.com/i=
+mages/branding/product/1x/translate_24dp.png" width=3D"20" height=3D"20" al=
+t=3D"Google Translate"></div></div></div><div class=3D"top" style=3D"paddin=
+g: 8px; float: left; width: 100%;"><h1 class=3D"title gray">Original text</=
+h1></div><div class=3D"middle" style=3D"padding: 8px;"><div class=3D"origin=
+al-text"></div></div><div class=3D"bottom" style=3D"padding: 8px;"><div cla=
+ss=3D"activity-links"><span class=3D"activity-link">Contribute a better tra=
+nslation</span><span class=3D"activity-link"></span></div><div class=3D"sta=
+rted-activity-container"><hr style=3D"color: #CCC; background-color: #CCC; =
+height: 1px; border: none;"><div class=3D"activity-root"></div></div></div>=
+<div class=3D"status-message" style=3D"display: none;"></div></div>
+
+
+<div class=3D"goog-te-spinner-pos"><div class=3D"goog-te-spinner-animation"=
+><svg xmlns=3D"http://www.w3.org/2000/svg" class=3D"goog-te-spinner" width=
+=3D"96px" height=3D"96px" viewBox=3D"0 0 66 66"><circle class=3D"goog-te-sp=
+inner-path" fill=3D"none" stroke-width=3D"6" stroke-linecap=3D"round" cx=3D=
+"33" cy=3D"33" r=3D"30"></circle></svg></div></div></body></html>
+------MultipartBoundary--apksyWDv2N0hhMDiqjVJ6YDvKq3Ezcu9ZrCBuPwS0a----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.secondstate.io/css/core.min.d80a993d510c975292aaf125143453caea1ce9183e67780892f9688fb918e7767bfa3d923abc58737a333f5d82dd794e.css
+
+@charset "utf-8";
+
+*, ::before, ::after { box-sizing: inherit; }
+
+html { box-sizing: border-box; font-weight: 400; font-size: 17px; line-heig=
+ht: 1.2; }
+
+body { margin: 0px; text-size-adjust: 100%; }
+
+p { margin: 0px; margin-block: 0px; margin-inline: 0px; }
+
+hr { margin: 0px; margin-block: 0px; margin-inline: 0px; border-style: inse=
+t none none; border-top-width: 1px; border-right-width: initial; border-rig=
+ht-color: initial; border-bottom-width: initial; border-bottom-color: initi=
+al; border-left-width: initial; border-left-color: initial; }
+
+ol, ul { margin: 0px; padding: 0px; margin-block: 0px; margin-inline: 0px; =
+padding-inline-start: 0px; }
+
+dl { margin: 0px; margin-block: 0px; margin-inline: 0px; }
+
+dd { margin-left: 0px; margin-inline-start: 0px; }
+
+table { line-height: inherit; font-weight: 400; font-size: inherit; }
+
+th { font-weight: 600; }
+
+tt, code, kbd, samp, pre { font-family: monospace; }
+
+pre { margin: 0px; white-space: pre; word-break: normal; overflow-wrap: nor=
+mal; }
+
+blockquote { margin: 0px; margin-block: 0px; margin-inline: 0px; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0px; margin-block: 0px; margin-inline: 0px=
+; font-weight: 600; }
+
+strong, b { font-weight: 600; }
+
+mark { color: currentcolor; background-color: rgb(255, 255, 0); }
+
+svg, img { max-width: 100%; border: none; }
+
+:root { color-scheme: light dark; }
+
+html { font-family: system-ui, -apple-system, BlinkMacSystemFont, "microsof=
+t yahei", "segoe ui", Ubuntu, Roboto, Oxygen, Cantarell, "fira sans", "droi=
+d sans", "helvetica neue", Helvetica, Arial, Verdana, "lucida grande", sans=
+-serif, "apple color emoji", "segoe ui emoji"; font-size: 16px; font-weight=
+: 400; line-height: 1.5; }
+
+body { display: block; color: rgb(36, 41, 46); background-color: rgb(243, 2=
+46, 249); word-break: normal; overflow-wrap: break-word; hyphens: auto; pad=
+ding-top: env(safe-area-inset-top); padding-right: env(safe-area-inset-righ=
+t); padding-bottom: env(safe-area-inset-bottom); padding-left: env(safe-are=
+a-inset-left); }
+
+h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.25; }
+
+h1 { font-size: 2em; }
+
+h2 { font-size: 1.5em; }
+
+h3 { font-size: 1.25em; }
+
+h4 { font-size: 1em; }
+
+h5 { font-size: 0.875em; }
+
+h6 { font-size: 0.85em; }
+
+blockquote, q { quotes: none; margin: 0px; }
+
+::selection { color: rgb(255, 255, 255); background-color: rgb(227, 62, 51)=
+; }
+
+mark { background-color: rgba(12, 242, 143, 0.2); }
+
+mark { padding-left: 0.15em; padding-right: 0.15em; border-radius: 3px; }
+
+code, tt, kbd, samp { font-family: Menlo, Consolas, "liberation mono", mono=
+space; font-weight: 400; font-size: 85%; }
+
+pre { display: block; text-align: left; font-size: 85%; line-height: 1.45; =
+margin: 0px; padding: 16px; border-radius: 3px; background-color: rgb(246, =
+248, 250); tab-size: 4; overflow: auto; }
+
+code, kbd, tt, samp { color: rgb(187, 0, 0); padding: 0.2em 0.4em; margin: =
+0px; font-size: 85%; background-color: rgb(249, 246, 246); border-radius: 3=
+px; }
+
+pre code, pre kbd, pre tt, pre samp { display: inline; font-size: inherit; =
+color: inherit; padding: 0px; border-radius: 0px; background-color: transpa=
+rent; }
+
+table { border-spacing: 0px; border-collapse: collapse; }
+
+td, th { padding: 0px; }
+
+table thead { color: rgb(29, 43, 76); }
+
+table tr:nth-child(2n) { background-color: rgb(243, 246, 250); }
+
+a { color: rgb(0, 102, 204); text-decoration: none; -webkit-tap-highlight-c=
+olor: transparent; }
+
+a:hover { text-decoration: underline; }
+
+del { opacity: 0.5; }
+
+abbr, acronym { cursor: help; }
+
+strong, b { color: rgba(29, 43, 76, 0.85); }
+
+.image-container, .image-container .link, .image-container .caption { displ=
+ay: block; }
+
+.image-container { text-align: center; }
+
+.image-container .title { display: inline-block; opacity: 0.6; font-size: 0=
+.875em; text-align: initial; min-height: 22px; padding: 10px 5px; }
+
+#header { padding-top: 20px; padding-bottom: 20px; min-height: 64px; margin=
+-bottom: 30px; background-color: rgb(255, 255, 255); }
+
+#content { display: block; margin: 0px auto; max-width: 720px; }
+
+#footer { font-size: 0.75em; margin-top: 48px; margin-bottom: 30px; }
+
+.header.wrap { overflow: hidden; }
+
+.header.wrap, .nav.wrap { margin-top: -5px; }
+
+.header.wrap > *, .nav.wrap > * { margin-top: 5px; }
+
+.header.left-side, .header.right-side { display: inline-block; text-align: =
+initial; }
+
+.header.left-side { float: left; }
+
+.header.right-side { float: right; }
+
+.site.home:hover { opacity: 0.5; text-decoration: none; }
+
+.site.logo { height: 42px; border-radius: 3px; vertical-align: middle; marg=
+in-right: 8px; }
+
+.site.name { color: rgba(29, 43, 76, 0.85); }
+
+.site.slogan { font-size: 0.875em; text-align: center; }
+
+.site.slogan .title { display: inline-block; text-align: initial; min-heigh=
+t: 22px; }
+
+.nav.item { display: inline-block; padding: 4px 6px; }
+
+.footer-wrap { display: block; text-align: center; }
+
+.date { font-size: 0.875em; }
+
+.langs { display: inline-block; list-style: none; font-size: 0.875em; }
+
+.lang { margin-left: 10px; }
+
+.note.list { margin: 0px; padding: 0px; list-style: none; }
+
+.note.list .item { width: 100%; margin-top: 16px; padding: 20px; background=
+-color: rgb(255, 255, 255); border-radius: 6px; box-shadow: rgba(224, 227, =
+231, 0.6) -1px 0px 0px 0px inset, rgb(224, 228, 231) 0px -1px 0px 0px inset=
+, rgba(224, 227, 231, 0.6) 1px 0px 0px 0px inset; }
+
+.note.list .item:hover { box-shadow: rgb(224, 228, 231) 0px 2px 6px 0px, rg=
+ba(224, 227, 231, 0.3) -1px 0px 0px 0px inset, rgb(224, 228, 231) 0px -1px =
+0px 0px inset, rgba(224, 227, 231, 0.2) 1px 0px 0px 0px inset; }
+
+.nav.item:hover { opacity: 0.5; text-decoration: none; }
+
+.tag:hover, .category:hover { opacity: 0.5; text-decoration: none; }
+
+.title { color: rgba(29, 43, 76, 0.85); }
+
+.note { display: block; text-decoration: none; }
+
+.note:hover { text-decoration: none; }
+
+.note.title, .site.name { font-size: 1.125em; font-weight: 600; }
+
+.mldr { opacity: 0.6; }
+
+.note.title, .note.date, .note.content, .note.imgs, .note.labels { margin: =
+5px 0px; }
+
+.note.content { color: rgb(36, 41, 46); }
+
+.note.imgs { display: block; border: 0px solid transparent; }
+
+.note.imgs .img { object-fit: cover; height: 80px; min-width: 80px; max-wid=
+th: 120px; border-radius: 4px; border: 1px solid rgb(230, 230, 230); margin=
+: 5px 0px 0px 5px; }
+
+.cover { width: 100%; }
+
+.article.header { text-align: center; margin-top: 4px; margin-bottom: 24px;=
+ }
+
+.article.date { margin-top: 24px; }
+
+.tag, .category { display: inline-block; font-weight: 600; margin: 5px 8px =
+5px 0px; }
+
+.tag::before { content: "#"; opacity: 0.5; }
+
+.tag { color: rgba(29, 43, 76, 0.85); }
+
+.category { padding: 0px 6px; border-radius: 3px; color: rgb(255, 255, 255)=
+; background-color: rgba(29, 43, 76, 0.85); }
+
+.article.labels, .article.license, .article.author, .article.navigation, .a=
+rticle.discussion, .article.share { margin-top: 32px; }
+
+.article.discussion { border-top: 1px dashed rgb(230, 230, 230); border-bot=
+tom: 1px dashed rgb(230, 230, 230); }
+
+.article.navigation p { margin: 0px; }
+
+.article.navigation p + p { margin-top: 5px; }
+
+.article.navigation .link { font-weight: 600; }
+
+.article.license { background-color: rgb(249, 249, 249); border-radius: 3px=
+; margin: 30px 0px; padding: 15px 20px; border: 2px dashed rgb(221, 221, 22=
+1); }
+
+.article.author { text-align: center; }
+
+.article.author > * { margin-top: 16px; }
+
+.article.author .avatar { display: block; max-width: 130px; margin: auto; b=
+order-radius: 3px; }
+
+.article.author .name { font-size: 1.25em; }
+
+.article.author .bio { color: rgb(153, 153, 153); }
+
+.article.author .details .item { display: inline-block; margin-left: 10px; =
+margin-right: 10px; }
+
+.article.author .details .item:hover { text-decoration: none; opacity: 0.5;=
+ }
+
+.slogan, .date, .license { color: rgb(153, 153, 153); }
+
+.pagination { display: block; text-align: center; margin: 30px 0px; }
+
+.pagination ul { display: inline-block; list-style: none; font-weight: 600;=
+ padding: 0px; margin: 0px; }
+
+.pagination ul li { display: inline; }
+
+.pagination ul li a { color: rgb(0, 102, 204); float: left; padding: 8px 16=
+px; text-decoration: none; }
+
+.pagination ul li a.active { background-color: rgb(0, 102, 204); color: rgb=
+(255, 255, 255); }
+
+.pagination ul li a:hover:not(.active) { background-color: rgba(0, 102, 204=
+, 0.5); }
+
+.article-container { padding: 20px; border-radius: 6px; box-shadow: rgba(29=
+, 43, 76, 0.12) 0px 12px 16px 0px; }
+
+.article-container { background-color: rgb(255, 255, 255); }
+
+.article.markdown-body { display: block; margin-top: 20px; margin-bottom: 2=
+0px; background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba=
+(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, =
+0, 0, 0) 3%); background-size: 20px 20px; background-position: 50% center; =
+}
+
+.article.markdown-body h1, .article.markdown-body h2, .article.markdown-bod=
+y h3, .article.markdown-body h4, .article.markdown-body h5, .article.markdo=
+wn-body h6 { color: rgb(29, 43, 76); margin-top: 24px; margin-bottom: 20px;=
+ }
+
+.article.markdown-body h1, .article.markdown-body h2 { padding-bottom: 0.3e=
+m; border-bottom: 1px solid rgb(230, 230, 230); }
+
+.article.markdown-body img { border-radius: 3px; transform: scale(1); trans=
+ition: transform 0.25s ease-in-out 0s; }
+
+.article.markdown-body img:hover { transform: scale(1.04); transition: tran=
+sform 0.25s ease-in-out 0s; }
+
+.article.markdown-body blockquote, .article.markdown-body q { opacity: 0.85=
+; }
+
+.article.markdown-body blockquote { padding: 0.15em 0.85em; border-left: 4p=
+x solid rgb(166, 170, 169); }
+
+.article.markdown-body q::before, .article.markdown-body q::after { opacity=
+: 0.6; }
+
+.article.markdown-body q::before { content: "=E2=9D=9D"; }
+
+.article.markdown-body q::after { content: "=E2=9D=9E"; }
+
+.article.markdown-body ol, .article.markdown-body ul { margin-bottom: 20px;=
+ margin-block-end: 20px; padding-inline-start: 40px; padding-left: 40px; }
+
+.article.markdown-body hr { opacity: 0.4; border-top-style: dashed; border-=
+top-color: inherit; }
+
+.article.markdown-body table { display: block; width: 100%; overflow: auto;=
+ }
+
+.article.markdown-body table tr { border: 0px; }
+
+.article.markdown-body table th { font-weight: 600; }
+
+.article.markdown-body table td, .article.markdown-body table th { min-widt=
+h: 86px; padding: 6px 13px; border: 1px solid rgb(230, 230, 230); }
+
+.article.markdown-body table th:empty { padding: 0px; border: 0px; }
+
+.article.markdown-body .plstable th { max-width: 25%; }
+
+.article.markdown-body li + li { margin-top: 20px; }
+
+.article.markdown-body > *, .article.markdown-body li > *, .article.markdow=
+n-body blockquote > *, .article.markdown-body .footnotes > * { margin-top: =
+0px; margin-bottom: 20px; }
+
+.article.markdown-body > :first-child, .article.markdown-body li > :first-c=
+hild, .article.markdown-body blockquote > :first-child { margin-top: 0px; }
+
+.article.markdown-body > :last-child, .article.markdown-body li > :last-chi=
+ld, .article.markdown-body blockquote > :last-child { margin-bottom: 0px; }
+
+#header, #foooter { padding-left: 15px; padding-right: 15px; }
+
+@media (max-width: 720px) {
+  .note.list .item, .article-container { border-radius: 0px; box-shadow: no=
+ne; }
+  .article.bottom { padding-left: 8px; padding-right: 8px; }
+}
+
+.article.markdown-body .katex-display { display: inline-block; }
+
+.article.markdown-body .katex, .article.markdown-body .MathJax { margin: 0p=
+x; padding: 0px; }
+
+.article.markdown-body .katex-display, .article.markdown-body .MathJax_Disp=
+lay { margin: 0px; padding: 0.2em 0.4em; }
+
+.article.markdown-body .MathJax { outline: none; }
+
+.article.markdown-body .lntable { border-radius: 3px; border: 1px solid rgb=
+(230, 230, 230); }
+
+.article.markdown-body .lntable .lntd .lnt { display: block; margin: 0px; p=
+adding: 0px; }
+
+.article.markdown-body .lntable .lntd { min-width: 0px; padding: 0px 5px; b=
+order: 0px; }
+
+.article.markdown-body .lntable .lntd pre { overflow: visible; width: 100%;=
+ margin-left: -15px; margin-right: -15px; border: 0px; }
+
+.article.markdown-body .lntable tr > :first-child { border-right: 1px dashe=
+d rgb(230, 230, 230); }
+
+pre, .chroma { color: rgb(36, 41, 46); background-color: rgb(246, 248, 250)=
+; }
+
+.chroma .err { color: rgb(215, 58, 73); }
+
+.chroma .lntd { vertical-align: top; padding: 0px; margin: 0px; border: 0px=
+; }
+
+.chroma .lntable { border-spacing: 0px; padding: 0px; margin: 0px; border: =
+0px; width: auto; overflow: auto; display: block; }
+
+.chroma .hl { display: block; width: 100%; background-color: rgb(255, 251, =
+221); }
+
+.chroma .lnt { margin-right: 0.4em; padding: 0px 0.4em; color: rgb(127, 127=
+, 127); }
+
+.chroma .ln { margin-right: 0.4em; padding: 0px 0.4em; color: rgb(127, 127,=
+ 127); }
+
+.chroma .k { color: rgb(215, 58, 73); }
+
+.chroma .kc { color: rgb(215, 58, 73); }
+
+.chroma .kd { color: rgb(215, 58, 73); }
+
+.chroma .kn { color: rgb(215, 58, 73); }
+
+.chroma .kp { color: rgb(215, 58, 73); }
+
+.chroma .kr { color: rgb(215, 58, 73); }
+
+.chroma .kt { color: rgb(215, 58, 73); }
+
+.chroma .na { color: rgb(111, 66, 193); }
+
+.chroma .nb { color: rgb(111, 66, 193); }
+
+.chroma .bp { color: rgb(111, 66, 193); }
+
+.chroma .nc { color: rgb(111, 66, 193); }
+
+.chroma .no { color: rgb(111, 66, 193); }
+
+.chroma .nd { color: rgb(111, 66, 193); }
+
+.chroma .ni { color: rgb(111, 66, 193); }
+
+.chroma .ne { color: rgb(111, 66, 193); }
+
+.chroma .nf { color: rgb(111, 66, 193); }
+
+.chroma .nl { color: rgb(111, 66, 193); }
+
+.chroma .nn { color: rgb(111, 66, 193); }
+
+.chroma .nx { color: rgb(34, 134, 58); }
+
+.chroma .nt { color: rgb(34, 134, 58); }
+
+.chroma .nv { color: rgb(111, 66, 193); }
+
+.chroma .vc { color: rgb(111, 66, 193); }
+
+.chroma .vg { color: rgb(111, 66, 193); }
+
+.chroma .vi { color: rgb(111, 66, 193); }
+
+.chroma .s { color: rgb(3, 47, 98); }
+
+.chroma .sa { color: rgb(3, 47, 98); }
+
+.chroma .sb { color: rgb(3, 47, 98); }
+
+.chroma .sc { color: rgb(3, 47, 98); }
+
+.chroma .dl { color: rgb(3, 47, 98); }
+
+.chroma .sd { color: rgb(3, 47, 98); }
+
+.chroma .s2 { color: rgb(3, 47, 98); }
+
+.chroma .se { color: rgb(3, 47, 98); }
+
+.chroma .sh { color: rgb(3, 47, 98); }
+
+.chroma .si { color: rgb(3, 47, 98); }
+
+.chroma .sx { color: rgb(3, 47, 98); }
+
+.chroma .sr { color: rgb(3, 47, 98); }
+
+.chroma .s1 { color: rgb(3, 47, 98); }
+
+.chroma .ss { color: rgb(3, 47, 98); }
+
+.chroma .m { color: rgb(0, 92, 197); }
+
+.chroma .mb { color: rgb(0, 92, 197); }
+
+.chroma .mf { color: rgb(0, 92, 197); }
+
+.chroma .mh { color: rgb(0, 92, 197); }
+
+.chroma .mi { color: rgb(0, 92, 197); }
+
+.chroma .il { color: rgb(0, 92, 197); }
+
+.chroma .mo { color: rgb(0, 92, 197); }
+
+.chroma .o { color: rgb(215, 58, 73); }
+
+.chroma .ow { color: rgb(215, 58, 73); }
+
+.chroma .p { color: rgb(215, 58, 73); }
+
+.chroma .c { color: rgb(106, 115, 125); }
+
+.chroma .ch { color: rgb(106, 115, 125); }
+
+.chroma .cm { color: rgb(106, 115, 125); }
+
+.chroma .c1 { color: rgb(106, 115, 125); }
+
+.chroma .cs { color: rgb(106, 115, 125); }
+
+.chroma .cp { color: rgb(106, 115, 125); }
+
+.chroma .cpf { color: rgb(106, 115, 125); }
+
+.chroma .gd { color: rgb(111, 66, 193); background-color: rgb(255, 221, 221=
+); }
+
+.chroma .ge { color: rgb(111, 66, 193); }
+
+.chroma .gr { color: rgb(170, 0, 0); }
+
+.chroma .gh { color: rgb(106, 115, 125); }
+
+.chroma .gi { color: rgb(111, 66, 193); background-color: rgb(221, 255, 221=
+); }
+
+.chroma .go { color: rgb(136, 136, 136); }
+
+.chroma .gp { color: rgb(85, 85, 85); }
+
+.chroma .gs { }
+
+.chroma .gu { color: rgb(170, 170, 170); }
+
+.chroma .gt { color: rgb(170, 0, 0); }
+
+.chroma .gl { text-decoration: underline; }
+
+.chroma .w { color: rgb(187, 187, 187); }
+
+@font-face { font-family: fontello; src: url("/assets/font//fontello.eot?91=
+882573#iefix") format("embedded-opentype"), url("/assets/font//fontello.svg=
+?91882573#fontello") format("svg"); font-weight: 400; font-style: normal; }
+
+@font-face { font-family: fontello; src: url("data:application/octet-stream=
+;base64,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3D=3D") format("wof=
+f"), url("data:application/octet-stream;base64,AAEAAAAPAIAAAwBwR1NVQiCLJXoA=
+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
+b2ZvbnRlbGxvVmVyc2lvbiAxLjBmb250ZWxsb0dlbmVyYXRlZCBieSBzdmcydHRmIGZyb20gRm9=
+udGVsbG8gcHJvamVjdC5odHRwOi8vZm9udGVsbG8uY29tAEMAbwBwAHkAcgBpAGcAaAB0ACAAKA=
+BDACkAIAAyADAAMgAwACAAYgB5ACAAbwByAGkAZwBpAG4AYQBsACAAYQB1AHQAaABvAHIAcwAgA=
+EAAIABmAG8AbgB0AGUAbABsAG8ALgBjAG8AbQBmAG8AbgB0AGUAbABsAG8AUgBlAGcAdQBsAGEA=
+cgBmAG8AbgB0AGUAbABsAG8AZgBvAG4AdABlAGwAbABvAFYAZQByAHMAaQBvAG4AIAAxAC4AMAB=
+mAG8AbgB0AGUAbABsAG8ARwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABzAHYAZwAyAHQAdABmAC=
+AAZgByAG8AbQAgAEYAbwBuAHQAZQBsAGwAbwAgAHAAcgBvAGoAZQBjAHQALgBoAHQAdABwADoAL=
+wAvAGYAbwBuAHQAZQBsAGwAbwAuAGMAbwBtAAAAAAIAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAA=
+AAAAAAAACAECAQMBBAEFAQYBBwEIAQkACHBhZ2VuZXh0C3BhZ2VwcmV2aWV3B3R3aXR0ZXIGZ2l=
+0aHViBWVtYWlsBmRvY2tlcgdhcnRpY2xlAAAAAAABAAH//wAPAAAAAAAAAAAAAAAAAAAAAAAYAB=
+gAGAAYA1L/agNS/2qwACwgsABVWEVZICBLuAAOUUuwBlNaWLA0G7AoWWBmIIpVWLACJWG5CAAIA=
+GNjI2IbISGwAFmwAEMjRLIAAQBDYEItsAEssCBgZi2wAiwgZCCwwFCwBCZasigBCkNFY0VSW1gh=
+IyEbilggsFBQWCGwQFkbILA4UFghsDhZWSCxAQpDRWNFYWSwKFBYIbEBCkNFY0UgsDBQWCGwMFk=
+bILDAUFggZiCKimEgsApQWGAbILAgUFghsApgGyCwNlBYIbA2YBtgWVlZG7ABK1lZI7AAUFhlWV=
+ktsAMsIEUgsAQlYWQgsAVDUFiwBSNCsAYjQhshIVmwAWAtsAQsIyEjISBksQViQiCwBiNCsQEKQ=
+0VjsQEKQ7ABYEVjsAMqISCwBkMgiiCKsAErsTAFJbAEJlFYYFAbYVJZWCNZISCwQFNYsAErGyGw=
+QFkjsABQWGVZLbAFLLAHQyuyAAIAQ2BCLbAGLLAHI0IjILAAI0JhsAJiZrABY7ABYLAFKi2wByw=
+gIEUgsAtDY7gEAGIgsABQWLBAYFlmsAFjYESwAWAtsAgssgcLAENFQiohsgABAENgQi2wCSywAE=
+MjRLIAAQBDYEItsAosICBFILABKyOwAEOwBCVgIEWKI2EgZCCwIFBYIbAAG7AwUFiwIBuwQFlZI=
+7AAUFhlWbADJSNhRESwAWAtsAssICBFILABKyOwAEOwBCVgIEWKI2EgZLAkUFiwABuwQFkjsABQ=
+WGVZsAMlI2FERLABYC2wDCwgsAAjQrILCgNFWCEbIyFZKiEtsA0ssQICRbBkYUQtsA4ssAFgICC=
+wDENKsABQWCCwDCNCWbANQ0qwAFJYILANI0JZLbAPLCCwEGJmsAFjILgEAGOKI2GwDkNgIIpgIL=
+AOI0IjLbAQLEtUWLEEZERZJLANZSN4LbARLEtRWEtTWLEEZERZGyFZJLATZSN4LbASLLEAD0NVW=
+LEPD0OwAWFCsA8rWbAAQ7ACJUKxDAIlQrENAiVCsAEWIyCwAyVQWLEBAENgsAQlQoqKIIojYbAO=
+KiEjsAFhIIojYbAOKiEbsQEAQ2CwAiVCsAIlYbAOKiFZsAxDR7ANQ0dgsAJiILAAUFiwQGBZZrA=
+BYyCwC0NjuAQAYiCwAFBYsEBgWWawAWNgsQAAEyNEsAFDsAA+sgEBAUNgQi2wEywAsQACRVRYsA=
+8jQiBFsAsjQrAKI7ABYEIgYLABYbUQEAEADgBCQopgsRIGK7ByKxsiWS2wFCyxABMrLbAVLLEBE=
+ystsBYssQITKy2wFyyxAxMrLbAYLLEEEystsBkssQUTKy2wGiyxBhMrLbAbLLEHEystsBwssQgT=
+Ky2wHSyxCRMrLbAeLACwDSuxAAJFVFiwDyNCIEWwCyNCsAojsAFgQiBgsAFhtRAQAQAOAEJCimC=
+xEgYrsHIrGyJZLbAfLLEAHistsCAssQEeKy2wISyxAh4rLbAiLLEDHistsCMssQQeKy2wJCyxBR=
+4rLbAlLLEGHistsCYssQceKy2wJyyxCB4rLbAoLLEJHistsCksIDywAWAtsCosIGCwEGAgQyOwA=
+WBDsAIlYbABYLApKiEtsCsssCorsCoqLbAsLCAgRyAgsAtDY7gEAGIgsABQWLBAYFlmsAFjYCNh=
+OCMgilVYIEcgILALQ2O4BABiILAAUFiwQGBZZrABY2AjYTgbIVktsC0sALEAAkVUWLABFrAsKrA=
+BFTAbIlktsC4sALANK7EAAkVUWLABFrAsKrABFTAbIlktsC8sIDWwAWAtsDAsALABRWO4BABiIL=
+AAUFiwQGBZZrABY7ABK7ALQ2O4BABiILAAUFiwQGBZZrABY7ABK7AAFrQAAAAAAEQ+IzixLwEVK=
+i2wMSwgPCBHILALQ2O4BABiILAAUFiwQGBZZrABY2CwAENhOC2wMiwuFzwtsDMsIDwgRyCwC0Nj=
+uAQAYiCwAFBYsEBgWWawAWNgsABDYbABQ2M4LbA0LLECABYlIC4gR7AAI0KwAiVJiopHI0cjYSB=
+YYhshWbABI0KyMwEBFRQqLbA1LLAAFrAEJbAEJUcjRyNhsAlDK2WKLiMgIDyKOC2wNiywABawBC=
+WwBCUgLkcjRyNhILAEI0KwCUMrILBgUFggsEBRWLMCIAMgG7MCJgMaWUJCIyCwCEMgiiNHI0cjY=
+SNGYLAEQ7ACYiCwAFBYsEBgWWawAWNgILABKyCKimEgsAJDYGQjsANDYWRQWLACQ2EbsANDYFmw=
+AyWwAmIgsABQWLBAYFlmsAFjYSMgILAEJiNGYTgbI7AIQ0awAiWwCENHI0cjYWAgsARDsAJiILA=
+AUFiwQGBZZrABY2AjILABKyOwBENgsAErsAUlYbAFJbACYiCwAFBYsEBgWWawAWOwBCZhILAEJW=
+BkI7ADJWBkUFghGyMhWSMgILAEJiNGYThZLbA3LLAAFiAgILAFJiAuRyNHI2EjPDgtsDgssAAWI=
+LAII0IgICBGI0ewASsjYTgtsDkssAAWsAMlsAIlRyNHI2GwAFRYLiA8IyEbsAIlsAIlRyNHI2Eg=
+sAUlsAQlRyNHI2GwBiWwBSVJsAIlYbkIAAgAY2MjIFhiGyFZY7gEAGIgsABQWLBAYFlmsAFjYCM=
+uIyAgPIo4IyFZLbA6LLAAFiCwCEMgLkcjRyNhIGCwIGBmsAJiILAAUFiwQGBZZrABYyMgIDyKOC=
+2wOywjIC5GsAIlRlJYIDxZLrErARQrLbA8LCMgLkawAiVGUFggPFkusSsBFCstsD0sIyAuRrACJ=
+UZSWCA8WSMgLkawAiVGUFggPFkusSsBFCstsD4ssDUrIyAuRrACJUZSWCA8WS6xKwEUKy2wPyyw=
+NiuKICA8sAQjQoo4IyAuRrACJUZSWCA8WS6xKwEUK7AEQy6wKystsEAssAAWsAQlsAQmIC5HI0c=
+jYbAJQysjIDwgLiM4sSsBFCstsEEssQgEJUKwABawBCWwBCUgLkcjRyNhILAEI0KwCUMrILBgUF=
+ggsEBRWLMCIAMgG7MCJgMaWUJCIyBHsARDsAJiILAAUFiwQGBZZrABY2AgsAErIIqKYSCwAkNgZ=
+COwA0NhZFBYsAJDYRuwA0NgWbADJbACYiCwAFBYsEBgWWawAWNhsAIlRmE4IyA8IzgbISAgRiNH=
+sAErI2E4IVmxKwEUKy2wQiywNSsusSsBFCstsEMssDYrISMgIDywBCNCIzixKwEUK7AEQy6wKys=
+tsEQssAAVIEewACNCsgABARUUEy6wMSotsEUssAAVIEewACNCsgABARUUEy6wMSotsEYssQABFB=
+OwMiotsEcssDQqLbBILLAAFkUjIC4gRoojYTixKwEUKy2wSSywCCNCsEgrLbBKLLIAAEErLbBLL=
+LIAAUErLbBMLLIBAEErLbBNLLIBAUErLbBOLLIAAEIrLbBPLLIAAUIrLbBQLLIBAEIrLbBRLLIB=
+AUIrLbBSLLIAAD4rLbBTLLIAAT4rLbBULLIBAD4rLbBVLLIBAT4rLbBWLLIAAEArLbBXLLIAAUA=
+rLbBYLLIBAEArLbBZLLIBAUArLbBaLLIAAEMrLbBbLLIAAUMrLbBcLLIBAEMrLbBdLLIBAUMrLb=
+BeLLIAAD8rLbBfLLIAAT8rLbBgLLIBAD8rLbBhLLIBAT8rLbBiLLA3Ky6xKwEUKy2wYyywNyuwO=
+ystsGQssDcrsDwrLbBlLLAAFrA3K7A9Ky2wZiywOCsusSsBFCstsGcssDgrsDsrLbBoLLA4K7A8=
+Ky2waSywOCuwPSstsGossDkrLrErARQrLbBrLLA5K7A7Ky2wbCywOSuwPCstsG0ssDkrsD0rLbB=
+uLLA6Ky6xKwEUKy2wbyywOiuwOystsHAssDorsDwrLbBxLLA6K7A9Ky2wciyzCQQCA0VYIRsjIV=
+lCK7AIZbADJFB4sAEVMC0AS7gAyFJYsQEBjlmwAbkIAAgAY3CxAAVCsgABACqxAAVCswoCAQgqs=
+QAFQrMOAAEIKrEABkK6AsAAAQAJKrEAB0K6AEAAAQAJKrEDAESxJAGIUViwQIhYsQNkRLEmAYhR=
+WLoIgAABBECIY1RYsQMARFlZWVmzDAIBDCq4Af+FsASNsQIARAAA") format("truetype"); =
+}
+
+[class^=3D"icon-"]::before, [class*=3D" icon-"]::before { font-family: font=
+ello; font-style: normal; font-weight: 400; display: inline-block; text-dec=
+oration: inherit; width: 1em; margin-right: 0.2em; text-align: center; font=
+-variant: normal; text-transform: none; line-height: 1em; margin-left: 0.2e=
+m; }
+
+.icon-pagenext::before { content: "=EE=A0=80"; }
+
+.icon-pagepreview::before { content: "=EE=A0=81"; }
+
+.icon-twitter::before { content: "=EE=A0=82"; }
+
+.icon-github::before { content: "=EE=A0=83"; }
+
+.icon-email::before { content: "=EE=A0=84"; }
+
+.icon-docker::before { content: "=EE=A0=85"; }
+
+.icon-article::before { content: "=EE=A2=B9"; }
+
+@font-face { font-family: lato; font-style: italic; font-weight: 400; font-=
+display: swap; src: local("Lato Italic"), local("Lato-Italic"), url("https:=
+//fonts.gstatic.com/s/lato/v16/S6u8w4BMUTPHjxsAXC-v.ttf") format("truetype"=
+); }
+
+@font-face { font-family: lato; font-style: italic; font-weight: 700; font-=
+display: swap; src: local("Lato Bold Italic"), local("Lato-BoldItalic"), ur=
+l("https://fonts.gstatic.com/s/lato/v16/S6u_w4BMUTPHjxsI5wq_Gwfo.ttf") form=
+at("truetype"); }
+
+@font-face { font-family: lato; font-style: normal; font-weight: 400; font-=
+display: swap; src: local("Lato Regular"), local("Lato-Regular"), url("http=
+s://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWw.ttf") format("truetype"=
+); }
+
+@font-face { font-family: lato; font-style: normal; font-weight: 700; font-=
+display: swap; src: local("Lato Bold"), local("Lato-Bold"), url("https://fo=
+nts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPHA.ttf") format("truetype");=
+ }
+
+@font-face { font-family: "source code pro"; font-style: italic; font-weigh=
+t: 400; font-display: swap; src: local("Source Code Pro Italic"), local("So=
+urceCodePro-It"), url("https://fonts.gstatic.com/s/sourcecodepro/v11/HI_QiY=
+sKILxRpg3hIP6sJ7fM7PqlONvUlMc.ttf") format("truetype"); }
+
+@font-face { font-family: "source code pro"; font-style: italic; font-weigh=
+t: 500; font-display: swap; src: local("Source Code Pro Medium Italic"), lo=
+cal("SourceCodePro-MediumIt"), url("https://fonts.gstatic.com/s/sourcecodep=
+ro/v11/HI_ViYsKILxRpg3hIP6sJ7fM7PqlONMnt9co5mg.ttf") format("truetype"); }
+
+@font-face { font-family: "source code pro"; font-style: italic; font-weigh=
+t: 600; font-display: swap; src: local("Source Code Pro SemiBold Italic"), =
+local("SourceCodePro-SemiBoldIt"), url("https://fonts.gstatic.com/s/sourcec=
+odepro/v11/HI_ViYsKILxRpg3hIP6sJ7fM7PqlONMLsNco5mg.ttf") format("truetype")=
+; }
+
+@font-face { font-family: "source code pro"; font-style: italic; font-weigh=
+t: 700; font-display: swap; src: local("Source Code Pro Bold Italic"), loca=
+l("SourceCodePro-BoldIt"), url("https://fonts.gstatic.com/s/sourcecodepro/v=
+11/HI_ViYsKILxRpg3hIP6sJ7fM7PqlONNvsdco5mg.ttf") format("truetype"); }
+
+@font-face { font-family: "source code pro"; font-style: normal; font-weigh=
+t: 400; font-display: swap; src: local("Source Code Pro Regular"), local("S=
+ourceCodePro-Regular"), url("https://fonts.gstatic.com/s/sourcecodepro/v11/=
+HI_SiYsKILxRpg3hIP6sJ7fM7PqlPevT.ttf") format("truetype"); }
+
+@font-face { font-family: "source code pro"; font-style: normal; font-weigh=
+t: 500; font-display: swap; src: local("Source Code Pro Medium"), local("So=
+urceCodePro-Medium"), url("https://fonts.gstatic.com/s/sourcecodepro/v11/HI=
+_XiYsKILxRpg3hIP6sJ7fM7PqtzsjDs-cv.ttf") format("truetype"); }
+
+@font-face { font-family: "source code pro"; font-style: normal; font-weigh=
+t: 600; font-display: swap; src: local("Source Code Pro SemiBold"), local("=
+SourceCodePro-SemiBold"), url("https://fonts.gstatic.com/s/sourcecodepro/v1=
+1/HI_XiYsKILxRpg3hIP6sJ7fM7Pqt4s_Ds-cv.ttf") format("truetype"); }
+
+@font-face { font-family: "source code pro"; font-style: normal; font-weigh=
+t: 700; font-display: swap; src: local("Source Code Pro Bold"), local("Sour=
+ceCodePro-Bold"), url("https://fonts.gstatic.com/s/sourcecodepro/v11/HI_XiY=
+sKILxRpg3hIP6sJ7fM7Pqths7Ds-cv.ttf") format("truetype"); }
+
+html { font-family: Lato, system-ui, -apple-system, BlinkMacSystemFont, "mi=
+crosoft yahei", "segoe ui", Ubuntu, Roboto, Oxygen, Cantarell, "fira sans",=
+ "droid sans", "helvetica neue", Helvetica, Arial, Verdana, "lucida grande"=
+, sans-serif, "apple color emoji", "segoe ui emoji"; }
+
+code, pre, tt, kbd, samp { font-family: "source code pro", Menlo, Consolas,=
+ "liberation mono", monospace; font-weight: 500; }
+------MultipartBoundary--apksyWDv2N0hhMDiqjVJ6YDvKq3Ezcu9ZrCBuPwS0a----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://translate.googleapis.com/translate_static/css/translateelement.css
+
+@charset "utf-8";
+
+.goog-te-banner-frame { left: 0px; top: 0px; height: 39px; width: 100%; z-i=
+ndex: 10000001; position: fixed; border-top: none; border-right: none; bord=
+er-left: none; border-image: initial; border-bottom: 1px solid rgb(107, 144=
+, 218); margin: 0px; box-shadow: rgb(153, 153, 153) 0px 0px 8px 1px; }
+
+.goog-te-menu-frame { z-index: 10000002; position: fixed; border: none; box=
+-shadow: rgb(153, 153, 153) 0px 3px 8px 2px; }
+
+.goog-te-ftab-frame { z-index: 10000000; border: none; margin: 0px; }
+
+.goog-te-gadget { font-family: arial; font-size: 11px; color: rgb(102, 102,=
+ 102); white-space: nowrap; }
+
+.goog-te-gadget img { vertical-align: middle; border: none; }
+
+.goog-te-gadget-simple { background-color: rgb(255, 255, 255); border-width=
+: 1px; border-style: solid; border-color: rgb(155, 155, 155) rgb(213, 213, =
+213) rgb(232, 232, 232); font-size: 10pt; display: inline-block; padding-to=
+p: 1px; padding-bottom: 2px; cursor: pointer; zoom: 1; }
+
+.goog-te-gadget-icon { margin-left: 2px; margin-right: 2px; width: 19px; he=
+ight: 19px; border: none; vertical-align: middle; }
+
+.goog-te-combo { margin-left: 4px; margin-right: 4px; vertical-align: basel=
+ine; }
+
+.goog-te-gadget .goog-te-combo { margin: 4px 0px; }
+
+.goog-logo-link, .goog-logo-link:link, .goog-logo-link:visited, .goog-logo-=
+link:hover, .goog-logo-link:active { font-size: 12px; font-weight: bold; co=
+lor: rgb(68, 68, 68); text-decoration: none; }
+
+.goog-te-banner .goog-logo-link, .goog-close-link { display: block; margin:=
+ 0px 10px; }
+
+.goog-te-banner .goog-logo-link { padding-top: 2px; padding-left: 4px; }
+
+.goog-te-combo, .goog-te-banner *, .goog-te-ftab *, .goog-te-menu *, .goog-=
+te-menu2 *, .goog-te-balloon * { font-family: arial; font-size: 10pt; }
+
+.goog-te-banner { margin: 0px; background-color: rgb(228, 239, 251); overfl=
+ow: hidden; }
+
+.goog-te-banner img { border: none; }
+
+.goog-te-banner-content { color: rgb(0, 0, 0); }
+
+.goog-te-banner-content img { vertical-align: middle; }
+
+.goog-te-banner-info { color: rgb(102, 102, 102); vertical-align: top; marg=
+in-top: 0px; font-size: 7pt; }
+
+.goog-te-banner-margin { width: 8px; }
+
+.goog-te-button { border-color: rgb(231, 231, 231); border-style: none soli=
+d solid none; border-width: 0px 1px 1px 0px; }
+
+.goog-te-button div { border-color: rgb(204, 204, 204) rgb(153, 153, 153) r=
+gb(153, 153, 153) rgb(204, 204, 204); border-style: solid; border-width: 1p=
+x; height: 20px; }
+
+.goog-te-button button { background: transparent; border: none; cursor: poi=
+nter; height: 20px; overflow: hidden; margin: 0px; vertical-align: top; whi=
+te-space: nowrap; }
+
+.goog-te-button button:active { background: none 0px 0px repeat scroll rgb(=
+204, 204, 204); }
+
+.goog-te-ftab { margin: 0px; background-color: rgb(255, 255, 255); white-sp=
+ace: nowrap; }
+
+.goog-te-ftab-link { text-decoration: none; font-weight: bold; font-size: 1=
+0pt; border: 1px outset rgb(136, 136, 136); padding: 6px 10px; white-space:=
+ nowrap; position: absolute; left: 0px; top: 0px; }
+
+.goog-te-ftab-link img { margin-left: 2px; margin-right: 2px; width: 19px; =
+height: 19px; border: none; vertical-align: middle; }
+
+.goog-te-ftab-link span { text-decoration: underline; margin-left: 2px; mar=
+gin-right: 2px; vertical-align: middle; }
+
+.goog-float-top .goog-te-ftab-link { padding: 2px; border-top-width: 0px; }
+
+.goog-float-bottom .goog-te-ftab-link { padding: 2px; border-bottom-width: =
+0px; }
+
+.goog-te-menu-value { text-decoration: none; color: rgb(0, 0, 204); white-s=
+pace: nowrap; margin-left: 4px; margin-right: 4px; }
+
+.goog-te-menu-value span { text-decoration: underline; }
+
+.goog-te-menu-value img { margin-left: 2px; margin-right: 2px; }
+
+.goog-te-gadget-simple .goog-te-menu-value { color: rgb(0, 0, 0); }
+
+.goog-te-gadget-simple .goog-te-menu-value span { text-decoration: none; }
+
+.goog-te-menu { background-color: rgb(255, 255, 255); text-decoration: none=
+; border: 2px solid rgb(195, 217, 255); overflow: hidden scroll; position: =
+absolute; left: 0px; top: 0px; }
+
+.goog-te-menu-item { padding: 3px; text-decoration: none; }
+
+.goog-te-menu-item, .goog-te-menu-item:link { color: rgb(0, 0, 204); backgr=
+ound: rgb(255, 255, 255); }
+
+.goog-te-menu-item:visited { color: rgb(85, 26, 139); }
+
+.goog-te-menu-item:hover { background: rgb(195, 217, 255); }
+
+.goog-te-menu-item:active { color: rgb(0, 0, 204); }
+
+.goog-te-menu2 { background-color: rgb(255, 255, 255); text-decoration: non=
+e; border: 1px solid rgb(107, 144, 218); overflow: hidden; padding: 4px; }
+
+.goog-te-menu2-colpad { width: 16px; }
+
+.goog-te-menu2-separator { margin: 6px 0px; height: 1px; background-color: =
+rgb(170, 170, 170); overflow: hidden; }
+
+.goog-te-menu2-item div, .goog-te-menu2-item-selected div { padding: 4px; }
+
+.goog-te-menu2-item .indicator { display: none; }
+
+.goog-te-menu2-item-selected .indicator { }
+
+.goog-te-menu2-item-selected .text { padding-left: 4px; padding-right: 4px;=
+ }
+
+.goog-te-menu2-item, .goog-te-menu2-item-selected { text-decoration: none; =
+}
+
+.goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:=
+visited div, .goog-te-menu2-item:active div { color: rgb(0, 0, 204); backgr=
+ound: rgb(255, 255, 255); }
+
+.goog-te-menu2-item:hover div { color: rgb(255, 255, 255); background: rgb(=
+51, 102, 204); }
+
+.goog-te-menu2-item-selected div, .goog-te-menu2-item-selected:link div, .g=
+oog-te-menu2-item-selected:visited div, .goog-te-menu2-item-selected:hover =
+div, .goog-te-menu2-item-selected:active div { color: rgb(0, 0, 0); font-we=
+ight: bold; }
+
+.goog-te-balloon { background-color: rgb(255, 255, 255); overflow: hidden; =
+padding: 8px; border: none; border-radius: 10px; }
+
+.goog-te-balloon-frame { background-color: rgb(255, 255, 255); border: 1px =
+solid rgb(107, 144, 218); box-shadow: rgb(153, 153, 153) 0px 3px 8px 2px; b=
+order-radius: 8px; }
+
+.goog-te-balloon img { border: none; }
+
+.goog-te-balloon-text { margin-top: 6px; }
+
+.goog-te-balloon-zippy { margin-top: 6px; white-space: nowrap; }
+
+.goog-te-balloon-zippy * { vertical-align: middle; }
+
+.goog-te-balloon-zippy .minus { background-image: url("//www.google.com/ima=
+ges/zippy_minus_sm.gif"); }
+
+.goog-te-balloon-zippy .plus { background-image: url("//www.google.com/imag=
+es/zippy_plus_sm.gif"); }
+
+.goog-te-balloon-zippy span { color: rgb(0, 0, 204); text-decoration: under=
+line; cursor: pointer; margin: 0px 4px; }
+
+.goog-te-balloon-form { margin: 6px 0px 0px; }
+
+.goog-te-balloon-form form { margin: 0px; }
+
+.goog-te-balloon-form form textarea { margin-bottom: 4px; width: 100%; }
+
+.goog-te-balloon-footer { margin: 6px 0px 4px; }
+
+.goog-te-spinner-pos { z-index: 1000; position: fixed; transition-delay: 0.=
+6s; left: -1000px; top: -1000px; }
+
+.goog-te-spinner-animation { display: flex; align-items: center; justify-co=
+ntent: center; width: 104px; height: 104px; border-radius: 50px; background=
+: url("//www.gstatic.com/images/branding/product/2x/translate_24dp.png") 50=
+% 50% no-repeat rgb(255, 255, 255); transition: all 0.6s ease-in-out 0s; tr=
+ansform: scale(0.4); opacity: 0; }
+
+.goog-te-spinner-animation-show { transform: scale(0.5); opacity: 1; }
+
+.goog-te-spinner { margin: 2px 0px 0px 2px; animation: 1.4s linear 0s infin=
+ite normal none running goog-te-spinner-rotator; }
+
+@keyframes goog-te-spinner-rotator {=20
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(270deg); }
+}
+
+.goog-te-spinner-path { stroke-dasharray: 187; stroke-dashoffset: 0; stroke=
+: rgb(66, 133, 244); transform-origin: center center; animation: 1.4s ease-=
+in-out 0s infinite normal none running goog-te-spinner-dash; }
+
+@keyframes goog-te-spinner-dash {=20
+  0% { stroke-dashoffset: 187; }
+  50% { stroke-dashoffset: 46.75; transform: rotate(135deg); }
+  100% { stroke-dashoffset: 187; transform: rotate(450deg); }
+}
+
+#goog-gt-tt html, #goog-gt-tt body, #goog-gt-tt div, #goog-gt-tt span, #goo=
+g-gt-tt iframe, #goog-gt-tt h1, #goog-gt-tt h2, #goog-gt-tt h3, #goog-gt-tt=
+ h4, #goog-gt-tt h5, #goog-gt-tt h6, #goog-gt-tt p, #goog-gt-tt a, #goog-gt=
+-tt img, #goog-gt-tt ol, #goog-gt-tt ul, #goog-gt-tt li, #goog-gt-tt table,=
+ #goog-gt-tt form, #goog-gt-tt tbody, #goog-gt-tt tr, #goog-gt-tt td { marg=
+in: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inhe=
+rit; font-weight: inherit; font-stretch: inherit; font-size: inherit; font-=
+family: inherit; vertical-align: baseline; text-align: left; line-height: n=
+ormal; }
+
+#goog-gt-tt ol, #goog-gt-tt ul { list-style: none; }
+
+#goog-gt-tt table { border-collapse: collapse; border-spacing: 0px; }
+
+#goog-gt-tt caption, #goog-gt-tt th, #goog-gt-tt td { text-align: left; fon=
+t-weight: normal; }
+
+div#goog-gt-tt { padding: 10px 14px; }
+
+#goog-gt-tt { color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);=
+ border: 1px solid rgb(238, 238, 238); box-shadow: rgba(0, 0, 0, 0.2) 0px 4=
+px 16px; display: none; font-family: arial; font-size: 10pt; width: 420px; =
+padding: 12px; position: absolute; z-index: 10000; }
+
+#goog-gt-tt .original-text, .gt-hl-layer { clear: both; font-size: 10pt; po=
+sition: relative; text-align: justify; width: 100%; }
+
+#goog-gt-tt .title { color: rgb(153, 153, 153); font-family: arial, sans-se=
+rif; margin: 4px 0px; text-align: left; }
+
+#goog-gt-tt .close-button { display: none; }
+
+#goog-gt-tt .logo { float: left; margin: 0px; }
+
+#goog-gt-tt .activity-links { display: inline-block; }
+
+#goog-gt-tt .started-activity-container { display: none; width: 100%; }
+
+#goog-gt-tt .activity-root { margin-top: 20px; }
+
+#goog-gt-tt .left { float: left; }
+
+#goog-gt-tt .right { float: right; }
+
+#goog-gt-tt .bottom { min-height: 15px; position: relative; height: 1%; }
+
+#goog-gt-tt .status-message { background: rgb(41, 145, 13); border-radius: =
+4px; box-shadow: rgb(30, 102, 9) 0px 2px 2px inset; color: white; font-size=
+: 9pt; font-weight: bolder; margin-top: 12px; padding: 6px; text-shadow: rg=
+b(30, 102, 9) 1px 1px 1px; }
+
+#goog-gt-tt .activity-link { color: rgb(17, 85, 204); cursor: pointer; font=
+-family: arial; font-size: 11px; margin-right: 15px; text-decoration: none;=
+ }
+
+#goog-gt-tt textarea { font-family: arial; resize: vertical; width: 100%; m=
+argin-bottom: 10px; border-radius: 1px; border-width: 1px; border-style: so=
+lid; border-color: silver rgb(217, 217, 217) rgb(217, 217, 217); border-ima=
+ge: initial; font-size: 13px; height: auto; overflow-y: auto; padding: 1px;=
+ }
+
+#goog-gt-tt textarea:focus { box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px ins=
+et; border: 1px solid rgb(77, 144, 254); outline: none; }
+
+#goog-gt-tt .activity-cancel { margin-right: 10px; }
+
+#goog-gt-tt .translate-form { min-height: 25px; vertical-align: middle; pad=
+ding-top: 8px; }
+
+#goog-gt-tt .translate-form .activity-form { margin-bottom: 0px; }
+
+#goog-gt-tt .translate-form .activity-form input { display: inline-block; m=
+in-width: 54px; border: 1px solid rgba(0, 0, 0, 0.1); text-align: center; c=
+olor: rgb(68, 68, 68); font-size: 11px; font-weight: bold; height: 27px; ou=
+tline: 0px; padding: 0px 8px; vertical-align: middle; line-height: 27px; ma=
+rgin: 0px 16px 0px 0px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px; border-=
+radius: 2px; transition: all 0.218s ease 0s; background-color: rgb(245, 245=
+, 245); background-image: -webkit-linear-gradient(top, rgb(245, 245, 245), =
+rgb(241, 241, 241)); user-select: none; cursor: default; }
+
+#goog-gt-tt .translate-form .activity-form input:hover { border: 1px solid =
+rgb(198, 198, 198); color: rgb(34, 34, 34); transition: all 0s ease 0s; bac=
+kground-color: rgb(248, 248, 248); background-image: -webkit-linear-gradien=
+t(top, rgb(248, 248, 248), rgb(241, 241, 241)); }
+
+#goog-gt-tt .translate-form .activity-form input:active { border: 1px solid=
+ rgb(198, 198, 198); color: rgb(51, 51, 51); background-color: rgb(246, 246=
+, 246); background-image: -webkit-linear-gradient(top, rgb(246, 246, 246), =
+rgb(241, 241, 241)); }
+
+#goog-gt-tt .translate-form .activity-form input:focus, #goog-gt-tt .transl=
+ate-form .activity-form input.focus { outline: none; border: 1px solid rgb(=
+77, 144, 254); z-index: 4 !important; }
+
+#goog-gt-tt .translate-form .activity-form input.selected { background-colo=
+r: rgb(238, 238, 238); background-image: -webkit-linear-gradient(top, rgb(2=
+38, 238, 238), rgb(224, 224, 224)); box-shadow: rgba(0, 0, 0, 0.1) 0px 1px =
+2px inset; border: 1px solid rgb(204, 204, 204); color: rgb(51, 51, 51); }
+
+#goog-gt-tt .translate-form .activity-form input.activity-submit { color: w=
+hite; border-color: rgb(48, 121, 237); background-color: rgb(77, 144, 254);=
+ background-image: -webkit-linear-gradient(top, rgb(77, 144, 254), rgb(71, =
+135, 237)); }
+
+#goog-gt-tt .translate-form .activity-form input.activity-submit:hover #goo=
+g-gt-tt .translate-form .activity-form input.activity-submit:focus, #goog-g=
+t-tt .translate-form .activity-form input.activity-submit.focus #goog-gt-tt=
+ .translate-form .activity-form input.activity-submit:active { border-color=
+: rgb(48, 121, 237); background-color: rgb(53, 122, 232); background-image:=
+ -webkit-linear-gradient(top, rgb(77, 144, 254), rgb(53, 122, 232)); }
+
+#goog-gt-tt .translate-form .activity-form input.activity-submit:hover { bo=
+x-shadow: rgb(255, 255, 255) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px =
+1px 1px; }
+
+#goog-gt-tt .translate-form .activity-form input:focus, #goog-gt-tt .transl=
+ate-form .activity-form input.focus, #goog-gt-tt .translate-form .activity-=
+form input:active, #goog-gt-tt .translate-form .activity-form input:hover, =
+#goog-gt-tt .translate-form .activity-form input.activity-submit:focus, #go=
+og-gt-tt .translate-form .activity-form input.activity-submit.focus, #goog-=
+gt-tt .translate-form .activity-form input.activity-submit:active, #goog-gt=
+-tt .translate-form .activity-form input.activity-submit:hover { border-col=
+or: rgb(48, 121, 237); }
+
+#goog-gt-tt .gray { color: rgb(153, 153, 153); font-family: arial, sans-ser=
+if; }
+
+#goog-gt-tt .alt-helper-text { color: rgb(153, 153, 153); font-size: 11px; =
+font-family: arial, sans-serif; margin: 15px 0px 5px; }
+
+#goog-gt-tt .alt-error-text { color: rgb(136, 0, 0); display: none; font-si=
+ze: 9pt; }
+
+.goog-text-highlight { background-color: rgb(201, 215, 241); box-shadow: rg=
+b(153, 153, 170) 2px 2px 4px; box-sizing: border-box; position: relative; }
+
+#goog-gt-tt .alt-menu.goog-menu { background: rgb(255, 255, 255); border: 1=
+px solid rgb(221, 221, 221); box-shadow: rgb(153, 153, 170) 0px 2px 4px; mi=
+n-width: 0px; outline: none; padding: 0px; position: absolute; z-index: 200=
+0; }
+
+#goog-gt-tt .alt-menu .goog-menuitem { cursor: pointer; padding: 2px 5px 5p=
+x; margin-right: 0px; border-style: none; }
+
+#goog-gt-tt .alt-menu div.goog-menuitem:hover { background: rgb(221, 221, 2=
+21); }
+
+#goog-gt-tt .alt-menu .goog-menuitem h1 { font-size: 100%; font-weight: bol=
+d; margin: 4px 0px; }
+
+#goog-gt-tt .alt-menu .goog-menuitem strong { color: rgb(52, 90, 173); }
+
+#goog-gt-tt .goog-submenu-arrow { text-align: right; position: absolute; ri=
+ght: 0px; left: auto; }
+
+#goog-gt-tt .goog-menuitem-rtl .goog-submenu-arrow { text-align: left; posi=
+tion: absolute; left: 0px; right: auto; }
+
+#goog-gt-tt .gt-hl-text, #goog-gt-tt .trans-target-highlight { background-c=
+olor: rgb(241, 234, 0); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.5) =
+3px 3px 4px; box-sizing: border-box; color: rgb(241, 234, 0); cursor: point=
+er; margin: -2px -2px -2px -3px; padding: 2px 2px 2px 3px; position: relati=
+ve; }
+
+#goog-gt-tt .trans-target-highlight { color: rgb(34, 34, 34); }
+
+#goog-gt-tt .gt-hl-layer { color: white; position: absolute !important; }
+
+#goog-gt-tt .trans-target, #goog-gt-tt .trans-target .trans-target-highligh=
+t { background-color: rgb(201, 215, 241); border-radius: 4px 4px 0px 0px; b=
+ox-shadow: rgba(0, 0, 0, 0.5) 3px 3px 4px; box-sizing: border-box; cursor: =
+pointer; margin: -2px -2px -2px -3px; padding: 2px 2px 3px 3px; position: r=
+elative; }
+
+#goog-gt-tt span:focus { outline: none; }
+
+#goog-gt-tt .trans-edit { background-color: transparent; border: 1px solid =
+rgb(77, 144, 254); border-radius: 0em; margin: -2px; padding: 1px; }
+
+#goog-gt-tt .gt-trans-highlight-l { border-left: 2px solid red; margin-left=
+: -2px; }
+
+#goog-gt-tt .gt-trans-highlight-r { border-right: 2px solid red; margin-rig=
+ht: -2px; }
+
+#goog-gt-tt #alt-input { padding: 2px; }
+
+#goog-gt-tt #alt-input-text { font-size: 11px; padding: 2px 2px 3px; margin=
+: 0px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); border=
+-width: 1px; border-style: solid; border-color: rgb(192, 192, 192) rgb(217,=
+ 217, 217) rgb(217, 217, 217); border-image: initial; display: inline-block=
+; vertical-align: top; height: 21px; box-sizing: border-box; border-radius:=
+ 1px; }
+
+#goog-gt-tt #alt-input-text:hover { border-width: 1px; border-style: solid;=
+ border-color: rgb(160, 160, 160) rgb(185, 185, 185) rgb(185, 185, 185); bo=
+rder-image: initial; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px inset; }
+
+#goog-gt-tt #alt-input-text:focus { box-shadow: rgba(0, 0, 0, 0.3) 0px 1px =
+2px inset; outline: none; border: 1px solid rgb(77, 144, 254); }
+
+#goog-gt-tt #alt-input-submit { font-size: 11px; padding: 2px 6px 3px; marg=
+in: 0px 0px 0px 2px; height: 21px; }
+------MultipartBoundary--apksyWDv2N0hhMDiqjVJ6YDvKq3Ezcu9ZrCBuPwS0a----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://www.gstatic.com/images/branding/product/2x/translate_24dp.png
+
+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
+iBrINb9BAAAAAElFTkSuQmCC
+
+------MultipartBoundary--apksyWDv2N0hhMDiqjVJ6YDvKq3Ezcu9ZrCBuPwS0a----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://www.secondstate.io/assets/img/logo.png
+
+iVBORw0KGgoAAAANSUhEUgAAANIAAABaCAYAAADNegj3AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwY
+AAABWWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpu
+czptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9
+Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRm
+OkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8v
+bnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3Rp
+ZmY6T3JpZW50YXRpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+Cjwv
+eDp4bXBtZXRhPgpMwidZAABAAElEQVR4Ae29CYBdRZ3vX+fce3tJ9+1OgCCExQERnoCKG6OopBXI
+poCOBh9bFlF4PpznKP513CY3qDM4i09HHQWFbChPWmdUlKQT1M5zANFBccER0YgsYUlI0nv3Xc55
+n++vzrn3dqc7nYRszL8r6XPPUqdO1a9+W/1+v6pybipNQWAKAs8YAsEzLuGgFxAHrrA8cN0udG62
+c32/q7Upf3Ls3MZd1JD89Sl99/wrK64QRPWPps6nILArCNSQble5DqlnEM7CztBt2h66/OOx6y6U
+90/1+I4LIMSpNAWBySGQnTzLoZADpO5YnrGadAdl1+kqnOsvSXGQP2f1YVwc7nLucGTJdMRJWxDG
+rXEcNoVx1BAHYejiyDOOMIjIU4pcXA6CoOSCoAzJFCNH2Sq2Ev6q/47gP9PSp36nIDAZBA5hQpLK
+5gJ3f2fgOoMKqltV8rSc8+XnBNmGU8PYnQ4RnBLHq08IAnc04mOGi12e32kQSI7zLL8uDnMJHDwt
+6iLmZZ5w4v84lpTTBdlMnCkvI8u1PJRUsuw6TKUpCEwEgUOQkEBeqW6dy2NXKFTHKfk5K/6b5JJz
+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
+
+------MultipartBoundary--apksyWDv2N0hhMDiqjVJ6YDvKq3Ezcu9ZrCBuPwS0a----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://www.gstatic.com/images/branding/product/1x/translate_24dp.png
+
+iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAADFUlEQVR4AWKgC0gC9E5OXW6FUQDt
+c41/VI89UxvvtcZVXNu2jbEV28nYNze3j+f0npV8cY271o6z9/10IZBddOILX3hcAKLgmAD5YfII
+lQC5IjtuDE77rUDxCYErOiHAjwLFR0eyfivAxHEBJmcBQsG///1ARE4k3z2RoxRgg8Qy45cDTJoo
+z1cJSOQpBcwNo3jcjy5XHwwODcFQmMHBQRgYGIjQ398fcDo96XGB/BjywjB5JKAQcMOZcexRm0Xp
+dwP0PBkJJIrLH/HQY+dwYGQC1fZJLH/ARwI5Ii8/m8FstlOE5EScnBEJkJRR9pCH8fEJfNIawMPP
+eHjYzOG+e3xEThy560W1xgQOp4vJvx+ghWTQnb/o4JAtKrtzFsiWC7ju1Dh2dOrBYrGBy+X6cYBk
+jIHhCVS85IHk12oDMD4xgYTeOUlyArNEXnw2gU5vBpvNDpsrZJgY6OvriwZIxmAjyKYteSEIO+8E
+od0yiZ+1XESeKROwsLwG1+2V4IbSo7ipTIKbK+S4tVqFW6pUmBQgGaP0QWgNHotrcOgpD3cbOaT3
+++7ymEUBWYi1J8fx2oOX0NrZDQ6HA6SXbuOzj7WpR5CtECCWA2Kk28bhwHBoF1WKuypWnhlGefUz
+7FVdxLd1jbBdcgrtdjt4vV6SxweyRGkqMuVREuUZ0iAeuuPBUuUl3FAmwfqWTnA6nbToLJI6wISM
+jDCJ8nSRVcdHcGupCndITuPZe4+RAoTb7Qa/3x8NpJDGIwtBYiYn0iRBPH6jFrrUeig9fgHP3XmM
+LODz+WIDQS6VlJHOSJATh257UaMxgt5ghNKTF/FjQ0tyIOfoSFaaNBhMl/LASIthqSREmoTHtKMB
+ApeGWX1iFLVaI50H2k1x6zDlV6+9ez/NW1T0GhcWvSJwQeErPKRsQIPBDLSDCIr8doCuLbvqBxcW
+v0WiWlGPPWoDmMwWcQS2uIDH4/m9wGF5865FJW+xSl6PnZ1a0OmMYI4PsAj3W4GKipa51fJabG9X
+g1qtA4NBHIHJBBaLBaxWKz0TfEODOnfK/7i+AovHxWW/Lj+SAAAAAElFTkSuQmCC
+
+------MultipartBoundary--apksyWDv2N0hhMDiqjVJ6YDvKq3Ezcu9ZrCBuPwS0a------

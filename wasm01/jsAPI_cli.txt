@@ -1,0 +1,8 @@
+// build
+cargo build --target wasm32-wasi --release
+wasmedge --dir .:. target/wasm32-wasi/release/embed_js.wasm
+
+
+// complete rust module, for use JavaScript Object API
+cargo build --target wasm32-wasi --release
+wasmedge --dir .:. target/wasm32-wasi/release/embed_rust_module.wasm
